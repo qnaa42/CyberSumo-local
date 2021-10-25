@@ -6,20 +6,19 @@ using GPC;
 public class Sumo_GameManager : BaseGameManager
 {
 	public bool isPlayable;
-	public GameObject Card1;
-	public GameObject Card2;
+
 	public GameObject PlayerArea;
 	public GameObject CardZone;
 
 	private GameObject card;
+
 	
-	List<GameObject> deck = new List<GameObject>();
 
 
 	public Sumo_UIManager _uiManager;
+   
+//SINGLETON
 
-    
-	//SINGLETON
 	public static Sumo_GameManager instance { get; private set; }
 
     BaseUserManager _baseUserManager;
@@ -32,18 +31,17 @@ public class Sumo_GameManager : BaseGameManager
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("SetTargetGameState=" + targetGameState);
+        
 
         SetTargetState(Game.State.loaded);
 
-		deck.Add(Card1);
-		deck.Add(Card2);
+		
 	}
 	public void OnClick()
 	{
 		for (int i = 0; i < 5; i++)
 		{
-			GameObject card = Instantiate(deck[Random.Range(0, deck.Count)], new Vector2(0, 0), Quaternion.identity);
+			//GameObject card = Instantiate(Sumo_CardManager.CardManager.deck[Random.Range(0, Sumo_CardManager.CardManager.deck.Count)], new Vector2(0, 0), Quaternion.identity);
 			card.transform.SetParent(PlayerArea.transform, false);
 		}
 	}
