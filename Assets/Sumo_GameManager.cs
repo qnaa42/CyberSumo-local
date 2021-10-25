@@ -58,29 +58,29 @@ public class Sumo_GameManager : BaseGameManager
 
 		switch (targetGameState)
 		{
+
+	//Game Starting Events
+
 			case Game.State.loaded:
 				isPlayable = false;
-				SetTargetState(Game.State.gameStarting);
-				UpdateCurrentState();
 				Loaded();
+				SetTargetState(Game.State.gameStarting);		
 				break;
 
 			case Game.State.gameStarting:
-
-				//pressplay
-				
-				GameStarting();
+				StartGame();
+				SetTargetState(Game.State.gameStarted);
 				break;
 
 			case Game.State.gameStarted:
-				//map and enemies spawn
 				GameStarted();
 				break;
 
 			case Game.State.gamePlaying:
-				//press to draw oppening hand
-				StartGame();
+				SetTargetState(Game.State.playerPlay1);
 				break;
+
+	//Player Turn
 
 			case Game.State.playerUntap:
 				isPlayable = false;
@@ -114,6 +114,42 @@ public class Sumo_GameManager : BaseGameManager
 				isPlayable = false;
 				break;
 
+			case Game.State.gameTurnPassPlayer:
+				SetTargetState(Game.State.aiUntap);
+				break;
+
+	//AI Turn
+
+			case Game.State.aiUntap:
+				break;
+
+			case Game.State.aiUpkeep:
+				break;
+
+			case Game.State.aiMove:
+				break;
+
+			case Game.State.aiPlay:
+				break;
+
+			case Game.State.playerTrigger1:
+				break;
+
+			case Game.State.aiResolveDMG:
+				break;
+
+			case Game.State.playerTrigger2:
+				break;
+
+			case Game.State.aiCleanUp:
+				break;
+
+			case Game.State.gameTurnPassAI:
+				SetTargetState(Game.State.playerUntap);
+				break;
+
+	//End Game Events
+
 			case Game.State.gameEnding:
 				GameEnding();
 				break;
@@ -142,7 +178,7 @@ public class Sumo_GameManager : BaseGameManager
 	void RestartGameTest()
     {
 		Debug.Log("Restart");
-		SetTargetState(Game.State.gameStarting);
+		SetTargetState(Game.State.playerUntap);
 		
 	}
 

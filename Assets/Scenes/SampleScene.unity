@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a2ff9c8cd33804eb1719a3999f748a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGameState: 0
+  currentGameState: 2
   targetGameState: 0
   lastGameState: 0
   OnLoaded:
@@ -518,6 +518,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnCleanUpPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameTurnPassPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIUntap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIUpkeep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrigger1:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIResolveDMG:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrigger2:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAICleanUP:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameTurnPassAI:
     m_PersistentCalls:
       m_Calls: []
   isPlayable: 0

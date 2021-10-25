@@ -56,8 +56,21 @@ namespace GPC
 		public UnityEvent OnResolveDMGPlayer;
 		public UnityEvent OnPlayerPlay2;
 		public UnityEvent OnCleanUpPlayer;
+		public UnityEvent OnGameTurnPassPlayer;
 
+		[Header("AI Turn")]
 
+		public UnityEvent OnAIUntap;
+		public UnityEvent OnAIUpkeep;
+		public UnityEvent OnAIMove;
+		public UnityEvent OnAIPlay;
+		public UnityEvent OnTrigger1;
+		public UnityEvent OnAIResolveDMG;
+		public UnityEvent OnTrigger2;
+		public UnityEvent OnAICleanUP;
+		public UnityEvent OnGameTurnPassAI;
+
+		//Game Main Events
 
 		public virtual void Loaded() { OnLoaded.Invoke(); }
 		public virtual void GameStarting() { OnGameStarting.Invoke(); }
@@ -65,6 +78,9 @@ namespace GPC
 		public virtual void GameEnding() { OnGameEnding.Invoke(); }
 		public virtual void GameEnded() { OnGameEnded.Invoke(); }
 		public virtual void RestartGame() { OnRestartGame.Invoke(); }
+
+		//Player Turn
+
 		public virtual void Untap () { OnUntap.Invoke(); }
 		public virtual void Upkeep () { OnUnkeep.Invoke(); }
 		public virtual void Draw() { OnDraw.Invoke(); }
@@ -73,6 +89,19 @@ namespace GPC
 		public virtual void ResolveDMGPlayer() { OnResolveDMGPlayer.Invoke();  }
 		public virtual void PlayerPlayPhase2() { OnPlayerPlay2.Invoke(); }
 		public virtual void CleanUpPlayer() { OnCleanUpPlayer.Invoke(); }
+		public virtual void TurnPassPlayer() { OnGameTurnPassPlayer.Invoke(); }
+
+		//AI Turn
+
+		public virtual void AIUntap() { OnAIUntap.Invoke(); }
+		public virtual void AIUpkeep() { OnAIUpkeep.Invoke(); }
+		public virtual void AIMove() { OnAIMove.Invoke(); }
+		public virtual void AIPlay() { OnAIPlay.Invoke(); }
+		public virtual void Trigger1() { OnTrigger1.Invoke(); }
+		public virtual void AIResolveDMG() { OnAIResolveDMG.Invoke(); }
+		public virtual void Trigger2() { OnTrigger2.Invoke(); }
+		public virtual void AICleanUp() { OnAICleanUP.Invoke(); }
+		public virtual void TurnPassAI() { OnGameTurnPassAI.Invoke(); }
 
 
 	//	public virtual void LevelStarting() { OnLevelStarting.Invoke(); }
@@ -93,6 +122,9 @@ namespace GPC
 
 			switch (targetGameState)
 			{
+
+		//Game Starting Events
+
 				case Game.State.idle:
 					break;
 
@@ -113,6 +145,8 @@ namespace GPC
 
 				case Game.State.gamePlaying:
 					break;
+
+		//Player Turn
 
 				case Game.State.playerUntap:
 					break;
@@ -138,6 +172,40 @@ namespace GPC
 				case Game.State.playerCleanUp:
 					break;
 
+				case Game.State.gameTurnPassPlayer:
+					break;
+
+		//AI Turn
+
+				case Game.State.aiUntap:
+					break;
+
+				case Game.State.aiUpkeep:
+					break;
+
+				case Game.State.aiMove:
+					break;
+
+				case Game.State.aiPlay:
+					break;
+
+				case Game.State.playerTrigger1:
+					break;
+
+				case Game.State.aiResolveDMG:
+					break;
+
+				case Game.State.playerTrigger2:
+					break;
+
+				case Game.State.aiCleanUp:
+					break;
+
+				case Game.State.gameTurnPassAI:
+					break;
+
+		//End Game Events
+
 				case Game.State.gameEnding:
 					GameEnding();
 					break;
@@ -148,7 +216,6 @@ namespace GPC
 
 				case Game.State.restartingGame:
 					RestartGame();
-
 					break;
 
 			//	case Game.State.gamePausing:
@@ -194,6 +261,9 @@ namespace GPC
 		{
 			switch (currentGameState)
 			{
+				
+		//Game Starting Events
+
 				case Game.State.idle:
 					break;
 
@@ -209,13 +279,15 @@ namespace GPC
 				case Game.State.gameStarted:
 					break;
 
+				case Game.State.gamePlaying:
+					break;
+
+		//Player Turn
+
 				case Game.State.playerUntap:
 					break;
 
 				case Game.State.playerUpkeep:
-					break;
-
-				case Game.State.gamePlaying:
 					break;
 
 				case Game.State.playerDraw:
@@ -235,6 +307,40 @@ namespace GPC
 
 				case Game.State.playerCleanUp:
 					break;
+
+				case Game.State.gameTurnPassPlayer:
+					break;
+
+		//AI Turn
+
+				case Game.State.aiUntap:
+					break;
+
+				case Game.State.aiUpkeep:
+					break;
+
+				case Game.State.aiMove:
+					break;
+
+				case Game.State.aiPlay:
+					break;
+
+				case Game.State.playerTrigger1:
+					break;
+
+				case Game.State.aiResolveDMG:
+					break;
+
+				case Game.State.playerTrigger2:
+					break;
+
+				case Game.State.aiCleanUp:
+					break;
+
+				case Game.State.gameTurnPassAI:
+					break;
+
+		//End Game Events
 
 				case Game.State.gameEnding:
 					break;

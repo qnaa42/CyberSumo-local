@@ -12,8 +12,8 @@ namespace GPC
 			loaded,
 			gameStarting,
 			gameStarted,
-
 			gamePlaying,
+
 			playerUntap,
 			playerUpkeep,
 			playerDraw,
@@ -22,6 +22,19 @@ namespace GPC
 			playerResolveDMG,
 			playerPlay2,
 			playerCleanUp,
+			gameTurnPassPlayer,
+
+			aiUntap,
+			aiUpkeep,
+			aiMove,
+			aiPlay,
+			playerTrigger1,
+			aiResolveDMG,
+			playerTrigger2,
+			aiCleanUp,
+			gameTurnPassAI,
+
+			
 
 			gameEnding,
 			gameEnded,
