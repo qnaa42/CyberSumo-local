@@ -25,16 +25,22 @@ public class Card : MonoBehaviour
 
     public Image frame;
 
+    public int numberOfCardsInDeck;
 
     // Start is called before the first frame update
     void Start()
     {
         thisCard[0] = CardDataBase.cardList[thisId];
+        
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        numberOfCardsInDeck = Sumo_CardManager.deckSize;
         id = thisCard[0].id;
         cardName = thisCard[0].cardName;
         cost = thisCard[0].cost;
@@ -61,6 +67,13 @@ public class Card : MonoBehaviour
             frame.GetComponent<Image>().color = new Color32(123, 123, 123, 255);
         }
 
+        if(this.tag == "Clone")
+        {
+            thisCard[0] = Sumo_CardManager.staticDeck[numberOfCardsInDeck-1];
+            numberOfCardsInDeck -= 1;
+            Sumo_CardManager.deckSize -= 1;
+            this.tag = "Untagged";
+        }
 
     }
 }

@@ -9,7 +9,8 @@ public class Sumo_GameManager : BaseGameManager
 
 	public GameObject PlayerArea;
 	public GameObject CardZone;
-
+	public GameObject Card;
+	public GameObject CardToHand;
 	private GameObject card;
 
 	
@@ -90,6 +91,7 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.playerDraw:
 				isPlayable = false;
+				Draw1Card();
 				break;
 
 			case Game.State.playerPlay1:
@@ -171,7 +173,7 @@ public class Sumo_GameManager : BaseGameManager
 	void StartGame()
     {
 		Debug.Log("GameStart");
-		OnClick();
+		StartCoroutine(Draw5Cards());
     }
 	void RestartGameTest()
     {
@@ -208,4 +210,40 @@ public class Sumo_GameManager : BaseGameManager
 		card.transform.position = PlayerArea.transform.position;
 		card.transform.SetParent(PlayerArea.transform, true);
 	}
+	    IEnumerator Draw5Cards()
+    {
+        for (int i=0; i<=4; i++)
+        {
+            yield return new WaitForSeconds(1);
+            GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
+			
+        }
+    }
+	IEnumerator Draw1Cards()
+	{
+		if (Sumo_CardManager.deckSize > 0)
+		{
+			for (int i = 0; i < 1; i++)
+			{
+				yield return new WaitForSeconds(1);
+				GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
+
+			}
+		}
+		else 
+		if (Sumo_CardManager.deckSize <= 0)
+        {
+			Debug.Log("Youlost");
+			SetTargetState(Game.State.idle);
+        }
+	}
+	public void Draw5Card()
+    {
+		StartCoroutine(Draw5Cards());
+    }
+	public void Draw1Card()
+    {
+		StartCoroutine(Draw1Cards());
+		
+    }
 }

@@ -14,6 +14,7 @@ public class Sumo_UIManager : MonoBehaviour
     public GameObject CardZone;
 
     public Text currentStateText;
+    public Text numbersOfCards;
 
 
     private GameObject ResolvingCard;
@@ -25,6 +26,7 @@ public class Sumo_UIManager : MonoBehaviour
     public void Update()
     {
         currentStateText.text = Sumo_GameManager.instance.currentGameState.ToString();
+        numbersOfCards.text = Sumo_CardManager.deckSize.ToString();
         if (CardZone.GetComponent<Populated>().isNotPopulated == false)
         {
             ResolvingCard = CardZone.transform.GetChild(0).gameObject;
