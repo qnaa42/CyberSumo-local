@@ -216,8 +216,9 @@ public class Sumo_GameManager : BaseGameManager
         {
             yield return new WaitForSeconds(1);
             GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
-			
-        }
+			_card.transform.SetParent(PlayerArea.transform, true);
+
+		}
     }
 	IEnumerator Draw1Cards()
 	{
@@ -227,6 +228,7 @@ public class Sumo_GameManager : BaseGameManager
 			{
 				yield return new WaitForSeconds(1);
 				GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
+				_card.transform.SetParent(PlayerArea.transform, true);
 
 			}
 		}

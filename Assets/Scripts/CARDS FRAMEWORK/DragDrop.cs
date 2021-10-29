@@ -10,6 +10,8 @@ public class DragDrop : MonoBehaviour
     
 
     public bool isDragging = false;
+
+    [SerializeField]
     private GameObject startParent;
     private Vector2 startPosition;
     private GameObject dropZone;
@@ -24,6 +26,7 @@ public class DragDrop : MonoBehaviour
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
         CardArea = GameObject.Find("CardZone");
+        startParent = GameObject.Find("PlayerArea");
      //   bool isNotPopulated = GameObject.Find("CardZone").GetComponent<>
         
     }
@@ -56,7 +59,7 @@ public class DragDrop : MonoBehaviour
         if (Sumo_GameManager.instance.isPlayable == true)
         {
             isDragging = true;
-            startParent = transform.parent.gameObject;
+         //   startParent = transform.parent.gameObject;
             startPosition = transform.position;
         }
     }
@@ -72,7 +75,8 @@ public class DragDrop : MonoBehaviour
             else
             {
                 transform.position = startPosition;
-                transform.SetParent(startParent.transform, false);
+            //    transform.SetParent(startParent.transform, false);
+                transform.parent = startParent.transform;
             }
         }
     }
