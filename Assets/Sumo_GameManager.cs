@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GPC;
+using UnityEngine.UI;
 
 public class Sumo_GameManager : BaseGameManager
 {
@@ -11,12 +12,15 @@ public class Sumo_GameManager : BaseGameManager
 	public GameObject CardZone;
 	public GameObject Card;
 	public GameObject CardToHand;
+	public GameObject ButtonHandler;
+
 	private GameObject card;
 
-	
+
 
 
 	public Sumo_UIManager _uiManager;
+	public BaseUserManager _userManager;
    
 //SINGLETON
 
@@ -214,11 +218,13 @@ public class Sumo_GameManager : BaseGameManager
     {
         for (int i=0; i<=4; i++)
         {
+			ButtonHandler.SetActive(false);
             yield return new WaitForSeconds(1);
             GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
 			_card.transform.SetParent(PlayerArea.transform, true);
 
 		}
+		ButtonHandler.SetActive(true);
     }
 	IEnumerator Draw1Cards()
 	{
@@ -226,11 +232,14 @@ public class Sumo_GameManager : BaseGameManager
 		{
 			for (int i = 0; i < 1; i++)
 			{
+				ButtonHandler.SetActive(false);
 				yield return new WaitForSeconds(1);
 				GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
 				_card.transform.SetParent(PlayerArea.transform, true);
+				
 
 			}
+			ButtonHandler.SetActive(true);
 		}
 		else 
 		if (Sumo_CardManager.deckSize <= 0)

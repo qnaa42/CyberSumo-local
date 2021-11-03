@@ -15,31 +15,37 @@ public class DragDrop : MonoBehaviour
     private GameObject startParent;
     private Vector2 startPosition;
     private GameObject dropZone;
+    [SerializeField]
     private bool isOverdropZone;
     private GameObject CardArea;
+    private GameObject PlayerArea;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
         CardArea = GameObject.Find("CardZone");
-        startParent = GameObject.Find("PlayerArea");
-     //   bool isNotPopulated = GameObject.Find("CardZone").GetComponent<>
-        
+        dropZone = GameObject.Find("CardZone");
+        PlayerArea = GameObject.Find("PlayerArea");
+
+        if (isDragging && Sumo_GameManager.instance.isPlayable == true)
+        {
+            transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            transform.SetParent(Canvas.transform, true);
+        }
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (Sumo_GameManager.instance.isPlayable == true)
         {
             if (collision.gameObject.tag == "DropZone" && CardArea.gameObject.GetComponent<Populated>().isNotPopulated == true)
             {
                 isOverdropZone = true;
-
-                dropZone = GameObject.Find("CardZone");
             }
             else
             {
@@ -59,8 +65,8 @@ public class DragDrop : MonoBehaviour
         if (Sumo_GameManager.instance.isPlayable == true)
         {
             isDragging = true;
-         //   startParent = transform.parent.gameObject;
-            startPosition = transform.position;
+            startParent = PlayerArea.transform.parent.gameObject;
+            startPosition = PlayerArea.transform.position;
         }
     }
     public void EndDrag()
@@ -70,26 +76,14 @@ public class DragDrop : MonoBehaviour
             isDragging = false;
             if (isOverdropZone)
             {
-                transform.SetParent(dropZone.transform, false);
+                transform.SetParent(dropZone.transform, true);
             }
             else
             {
                 transform.position = startPosition;
-            //    transform.SetParent(startParent.transform, false);
+                transform.SetParent(startParent.transform, true);
                 transform.parent = startParent.transform;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isDragging && Sumo_GameManager.instance.isPlayable == true)
-        {
-            transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.SetParent(Canvas.transform, true);
-        }
-    }
-
-    
+    }   
 }

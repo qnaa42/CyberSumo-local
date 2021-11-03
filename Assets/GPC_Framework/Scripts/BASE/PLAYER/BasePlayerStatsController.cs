@@ -8,6 +8,8 @@ namespace GPC
 
 	public class BasePlayerStatsController : ExtendedCustomMonoBehaviour
 	{
+		public static Sumo_GameManager PlayerStats { get; private set; }
+
 		public BaseUserManager _myDataManager;
 		public int myID;
 		public bool disableAutoPlayerListAdd;
@@ -46,11 +48,42 @@ namespace GPC
 				_myDataManager = GetComponent<BaseUserManager>();
 		}
 
-		public virtual void AddScore(int anAmount)
+//NAME
+		public string GetName()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetName(myID);
+        }
+
+		public virtual void SetName(string aName)
 		{
 			if (!didInit)
 				Init();
-			_myDataManager.AddScore(myID, anAmount);
+			_myDataManager.SetName(myID, aName);
+		}
+
+//LEVEL
+		public int GetLevel()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetLevel(myID);
+        }
+
+		public virtual void SetLevel(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetLevel(myID, anAmount);
+        }
+
+//HEALTH
+		public int GetHealth()
+		{
+			if (!didInit)
+				Init();
+			return _myDataManager.GetHealth(myID);
 		}
 
 		public virtual void AddHealth(int anAmount)
@@ -60,46 +93,11 @@ namespace GPC
 			_myDataManager.AddHealth(myID, anAmount);
 		}
 
-		public virtual void ReduceScore(int anAmount)
-		{
-			if (!didInit)
-				Init();
-			_myDataManager.ReduceScore(myID, anAmount);
-		}
-
 		public virtual void ReduceHealth(int anAmount)
 		{
 			if (!didInit)
 				Init();
 			_myDataManager.ReduceHealth(myID, anAmount);
-		}
-
-		public virtual void SetLives(int anAmount)
-		{
-			if (!didInit)
-				Init();
-			_myDataManager.SetLives(myID, anAmount);
-		}
-
-		public virtual void AddLives(int anAmount)
-		{
-			if (!didInit)
-				Init();
-			_myDataManager.AddLives(myID, -anAmount);
-		}
-
-		public virtual void ReduceLives(int anAmount)
-		{
-			if (!didInit)
-				Init();
-			_myDataManager.ReduceLives(myID, anAmount);
-		}
-
-		public virtual void SetScore(int anAmount)
-		{
-			if (!didInit)
-				Init();
-			_myDataManager.SetScore(myID, anAmount);
 		}
 
 		public virtual void SetHealth(int anAmount)
@@ -109,32 +107,249 @@ namespace GPC
 			_myDataManager.SetHealth(myID, anAmount);
 		}
 
-		public virtual void SetName(string aName)
-		{
+//TYPE
+		public int GetTypee()
+        {
 			if (!didInit)
 				Init();
-			_myDataManager.SetName(myID, aName);
-		}
+			return _myDataManager.GetType(myID);
+        }
+		
+		public virtual void SetType(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetLevel(myID, anAmount);
+        }
 
-		public int GetLives()
-		{
+//MANA FULL
+		public int GetManaFull()
+        {
 			if (!didInit)
 				Init();
-			return _myDataManager.GetLives(myID);
-		}
+			return _myDataManager.GetManaFull(myID);
+        }
 
-		public int GetHealth()
-		{
+		public virtual void AddManaFull(int anAmount)
+        {
 			if (!didInit)
 				Init();
-			return _myDataManager.GetHealth(myID);
-		}
+			_myDataManager.AddManaFull(myID, anAmount);
+        }
+		
+		public virtual void ReduceManaFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReduceManaFull(myID, anAmount);
+        }
 
-		public int GetScore()
-		{
+		public virtual void SetManaFull(int anAmount)
+        {
 			if (!didInit)
 				Init();
-			return _myDataManager.GetScore(myID);
+			_myDataManager.SetManaFull(myID, anAmount);
+        }
+
+//MANA NOW
+		public int GetManaNow()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetManaNow(myID);
 		}
+		
+		public virtual void AddManaNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddManaNow(myID, anAmount);
+        }
+
+		public virtual void ReduceManaNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReduceManaNow(myID, anAmount);
+        }
+
+		public virtual void SetManaNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetManaNow(myID, anAmount);
+        }
+
+//MOVE FULL
+		public int GetMoveFull()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetMoveFull(myID);
+        }
+
+		public virtual void AddMoveFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddMoveFull(myID, anAmount);
+        }
+
+		public virtual void ReduceMoveFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReduceMoveFull(myID, anAmount);
+        }
+
+		public virtual void SetMoveFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetMoveFull(myID, anAmount);
+        }
+
+//MOVE NOW
+		public int GetMoveNow()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetMoveNow(myID);
+        }
+		
+		public virtual void AddMoveNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddMoveNow(myID, anAmount);
+        }
+
+		public virtual void ReduceMoveNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReduceMoveNow(myID, anAmount);
+        }
+
+		public virtual void SetMoveNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetMoveNow(myID, anAmount);
+        }
+
+//HAND SIZE
+		public int GetHandSize()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetHandSize(myID);
+        }
+
+		public virtual void SetHandSize(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetHandSize(myID, anAmount);
+        }
+
+//HAND NOW
+		public int GetHandNow()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetHandNow(myID);
+        }
+
+		public virtual void AddHandNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddHandNow(myID, anAmount);
+        }
+
+		public virtual void ReduceHandNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReduceHandNow(myID, anAmount);
+        }
+
+		public virtual void SetHandNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetHandNow(myID, anAmount);
+        }
+
+//POS HORIZONTAL
+
+		public int GetPosHorizontal()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetPosHorizontal(myID);
+        }
+
+		public virtual void AddPosHorizontal(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddPosHorizontal(myID, anAmount);
+        }
+
+		public virtual void ReducePosHorizontal(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReducePosHorizontal(myID, anAmount);
+        }
+
+		public virtual void SetPosHorizontal(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.SetPosHorizontal(myID, anAmount);
+        }
+
+//POS VERTICAL
+
+		public int GetPosVertical()
+        {
+			if (!didInit)
+				Init();
+			return _myDataManager.GetPosVertical(myID);
+        }
+
+		public virtual void AddPosVertical(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.AddPosVertical(myID, anAmount);
+        }	
+		
+		public virtual void ReducePosVertical(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReducePosVertical(myID, anAmount);
+        }
+
+		public virtual void SetPosVertical(int anAmount)
+        {
+			if (!didInit)
+				Init();
+			_myDataManager.ReducePosVertical(myID, anAmount);
+        }
+
+
+
+
+
+
+
+
+
+
 	}
 }
