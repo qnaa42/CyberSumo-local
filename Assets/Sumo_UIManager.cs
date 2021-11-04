@@ -41,17 +41,20 @@ public class Sumo_UIManager : MonoBehaviour
 
     public void Update()
     {
-        //   int ID = BaseUserManager.global_userDatas[0].id;
-    //    int HP = BasePlayerStatsController.PlayerStats.GetHealth().ToString();
-        int type = BaseUserManager.global_userDatas[0].type;
-        int ManaNow = BaseUserManager.global_userDatas[0].ManaNow;
-        int ManaMax = BaseUserManager.global_userDatas[0].ManaFull;
-        int MoveNow = BaseUserManager.global_userDatas[0].MoveNow;
-        int MoveMax = BaseUserManager.global_userDatas[0].MoveFull;
-        int HandNow = BaseUserManager.global_userDatas[0].HandNow;
-        int HandMax = BaseUserManager.global_userDatas[0].HandSize;
-        int PosHorizontal = BaseUserManager.global_userDatas[0].PosHorizontal;
-        int PosVertical = BaseUserManager.global_userDatas[0].PosVertical;
+//PLAYER STATS BOX
+
+        hpText.text = "" + _userStatsManager.GetHealth().ToString();
+        TypeText.text = "" + _userStatsManager.GetType().ToString();
+        ManaNowText.text = "" + _userStatsManager.GetManaNow().ToString();
+        ManaMaxText.text = "" + _userStatsManager.GetManaFull().ToString();
+        MoveNowText.text = "" + _userStatsManager.GetMoveNow().ToString();
+        MoveMaxText.text = "" + _userStatsManager.GetMoveFull().ToString();
+        HandNowText.text = "" + _userStatsManager.GetHandNow().ToString();
+        HandMaxText.text = "" + _userStatsManager.GetHandSize().ToString();
+        PosHorizontalText.text = "" + _userStatsManager.GetPosHorizontal().ToString();
+        PosVerticalText.text = "" + _userStatsManager.GetPosVertical().ToString();
+
+
         currentStateText.text = Sumo_GameManager.instance.currentGameState.ToString();
         numbersOfCards.text = Sumo_CardManager.deckSize.ToString();
 //        hpText.text = "" + HP;

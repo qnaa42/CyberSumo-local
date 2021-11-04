@@ -15,12 +15,14 @@ public class Sumo_GameManager : BaseGameManager
 	public GameObject ButtonHandler;
 
 	private GameObject card;
+	private GameObject thiscard;
 
 
 
 
 	public Sumo_UIManager _uiManager;
 	public BaseUserManager _userManager;
+	public BasePlayerStatsController _playerStats;
    
 //SINGLETON
 
@@ -42,15 +44,6 @@ public class Sumo_GameManager : BaseGameManager
 
 		
 	}
-	public void OnClick()
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			//GameObject card = Instantiate(Sumo_CardManager.CardManager.deck[Random.Range(0, Sumo_CardManager.CardManager.deck.Count)], new Vector2(0, 0), Quaternion.identity);
-			card.transform.SetParent(PlayerArea.transform, false);
-		}
-	}
-
 	public override void UpdateTargetState()
 	{
 		Debug.Log("currentGameState=" + currentGameState);
@@ -87,6 +80,8 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.playerUntap:
 				isPlayable = false;
+				_playerStats.SetManaNow(_playerStats.GetManaFull());
+				_playerStats.SetMoveNow(_playerStats.GetMoveFull());
 				break;
 
 			case Game.State.playerUpkeep:
@@ -95,7 +90,10 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.playerDraw:
 				isPlayable = false;
-				Draw1Card();
+				if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
+				{
+					Draw1Card();
+				}
 				break;
 
 			case Game.State.playerPlay1:
@@ -194,7 +192,10 @@ public class Sumo_GameManager : BaseGameManager
 	// Update is called once per frame
 	void Update()
     {
-        
+        if (_playerStats.GetHealth() <= 0)
+        {
+			SetTargetState(Game.State.gameEnding);
+        }
     }
 	public void ClickPassTurn()
 	{
@@ -205,13 +206,23 @@ public class Sumo_GameManager : BaseGameManager
 	public void ClickResolve()
 	{
 		card = CardZone.transform.GetChild(0).gameObject;
-		Destroy(card);
+		thiscard = card.transform.GetChild(0).gameObject;
+		if (thiscard.GetComponent<Card>().cost <= _playerStats.GetManaNow())
+		{
+			_playerStats.ReduceManaNow(thiscard.GetComponent<Card>().cost);
+			Destroy(card);
+		}
+		else 
+		if (thiscard.GetComponent<Card>().cost > _playerStats.GetManaNow())
+        {
+			CancelClick();
+			Debug.Log("NotEnoughtMANA");
+        }
 		// resolving script WIP.
 	}
 	public void CancelClick()
 	{
 		card = CardZone.transform.GetChild(0).gameObject;
-		card.transform.position = PlayerArea.transform.position;
 		card.transform.SetParent(PlayerArea.transform, true);
 	}
 	    IEnumerator Draw5Cards()
@@ -222,7 +233,7 @@ public class Sumo_GameManager : BaseGameManager
             yield return new WaitForSeconds(1);
             GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
 			_card.transform.SetParent(PlayerArea.transform, true);
-
+			_playerStats.AddHandNow(1);
 		}
 		ButtonHandler.SetActive(true);
     }
@@ -236,8 +247,7 @@ public class Sumo_GameManager : BaseGameManager
 				yield return new WaitForSeconds(1);
 				GameObject _card = Instantiate(CardToHand, transform.position, transform.rotation);
 				_card.transform.SetParent(PlayerArea.transform, true);
-				
-
+				_playerStats.AddHandNow(1);
 			}
 			ButtonHandler.SetActive(true);
 		}
@@ -250,11 +260,16 @@ public class Sumo_GameManager : BaseGameManager
 	}
 	public void Draw5Card()
     {
-		StartCoroutine(Draw5Cards());
+		if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
+		{
+			StartCoroutine(Draw5Cards());
+		}
     }
 	public void Draw1Card()
     {
-		StartCoroutine(Draw1Cards());
-		
+		if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
+		{
+			StartCoroutine(Draw1Cards());
+		}	
     }
 }

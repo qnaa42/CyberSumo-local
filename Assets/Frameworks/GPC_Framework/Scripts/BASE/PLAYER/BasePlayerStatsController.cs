@@ -25,6 +25,7 @@ namespace GPC
 
 			SetupDataManager();
 			didInit = true;
+			_myDataManager.AddNewPlayer();
 		}
 
 		public virtual void SetPlayerDetails(int anID)

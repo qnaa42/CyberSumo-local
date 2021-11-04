@@ -12,11 +12,11 @@ public class CardDataBase : MonoBehaviour
         cardList.Add(new CardClass(1, "Land", 0, 0, "Test Description", Resources.Load<Sprite>("1"), "Green"));
         cardList.Add(new CardClass(2, "Land2", 0, 0, "Test Description", Resources.Load<Sprite>("2"), "Green"));
         cardList.Add(new CardClass(3, "Artefact", 1, 0, "Test Description", Resources.Load<Sprite>("3"), "Grey"));
-        cardList.Add(new CardClass(4, "Artefact2", 2, 0, "Test Description", Resources.Load<Sprite>("4"), "grey"));
-        cardList.Add(new CardClass(5, "Mega Artefact", 4, 0, "Test Description", Resources.Load<Sprite>("5"), "grey"));
-        cardList.Add(new CardClass(6, "Super Duper Artefact", 6, 0, "Test Description", Resources.Load<Sprite>("6"), "grey"));
+        cardList.Add(new CardClass(4, "Artefact2", 2, 0, "Test Description", Resources.Load<Sprite>("4"), "Grey"));
+        cardList.Add(new CardClass(5, "Mega Artefact", 4, 0, "Test Description", Resources.Load<Sprite>("5"), "Grey"));
+        cardList.Add(new CardClass(6, "Super Duper Artefact", 6, 0, "Test Description", Resources.Load<Sprite>("6"), "Grey"));
         cardList.Add(new CardClass(7, "Attack", 2, 1, "Test Description", Resources.Load<Sprite>("7"), "Red"));
         cardList.Add(new CardClass(8, "Better Attack", 3, 2, "Test Description", Resources.Load<Sprite>("8"), "Red"));
-        cardList.Add(new CardClass(9, "Best Attack", 6, 4, "Test Description", Resources.Load<Sprite>("9"), "Redr"));
+        cardList.Add(new CardClass(9, "Best Attack", 6, 4, "Test Description", Resources.Load<Sprite>("9"), "Red"));
     }
 }
