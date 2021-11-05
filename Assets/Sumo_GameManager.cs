@@ -23,13 +23,13 @@ public class Sumo_GameManager : BaseGameManager
 	public Sumo_UIManager _uiManager;
 	public BaseUserManager _userManager;
 	public BasePlayerStatsController _playerStats;
-   
-//SINGLETON
+
+	BaseUserManager _baseUserManager;
+
+
+	//SINGLETON
 
 	public static Sumo_GameManager instance { get; private set; }
-
-    BaseUserManager _baseUserManager;
-
     public Sumo_GameManager()
     {
         instance = this;
@@ -225,7 +225,7 @@ public class Sumo_GameManager : BaseGameManager
 		card = CardZone.transform.GetChild(0).gameObject;
 		card.transform.SetParent(PlayerArea.transform, true);
 	}
-	    IEnumerator Draw5Cards()
+	IEnumerator Draw5Cards()
     {
         for (int i=0; i<=4; i++)
         {

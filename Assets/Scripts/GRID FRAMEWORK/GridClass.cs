@@ -10,6 +10,9 @@ public class GridClass
     private int Vertical;
     private float cellSize;
     private int[,] gridArray;
+    private GameObject[,] DebugImage;
+
+
     private GameObject Grid;
 
 
@@ -21,6 +24,7 @@ public class GridClass
         this.cellSize = cellSize;
 
         gridArray = new int[Horizontal, Vertical];
+        DebugImage = new GameObject[Horizontal, Vertical];
 
         for (int x=0; x < gridArray.GetLength(0); x++)
         {
@@ -34,7 +38,7 @@ public class GridClass
 
 
 
-                UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white);
+                DebugImage[x,y] = UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white);
                 GameObject thisTile = GameObject.Find("Tile" + x + "/" + y);
                 thisTile.gameObject.transform.SetParent(Grid.transform, true);
             }
@@ -44,6 +48,14 @@ public class GridClass
     private Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize;
+    }
+
+    public void SetValue(int x, int y, int value)
+    {
+        if (x >= 0 && y <= 0 && x < Horizontal && y < Vertical)
+        {
+            gridArray[x, y] = value;
+        }
     }
 
 }

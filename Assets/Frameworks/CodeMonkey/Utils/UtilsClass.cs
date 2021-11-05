@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using GPC;
 
 namespace CodeMonkey.Utils {
 
@@ -86,6 +87,7 @@ namespace CodeMonkey.Utils {
             Image image = gameObject.GetComponent<Image>();
             image.sprite = sprite;
             image.color = color;
+            gameObject.AddComponent<Tile>();
             return gameObject;
         }
 

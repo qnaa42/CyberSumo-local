@@ -9,6 +9,11 @@ public class Sumo_CardManager : MonoBehaviour
 
     public static Sumo_CardManager CardManager { get; private set; }
 
+ //   public Sumo_CardManager()
+//   {
+ //       CardManager = this;
+  //  }
+
     public List<CardClass> deck = new List<CardClass>();
     public List<CardClass> shufflepile = new List<CardClass>();
     public static List<CardClass> staticDeck = new List<CardClass>();
