@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7080489797845606727}
   - component: {fileID: 1052378123235740672}
   m_Layer: 0
-  m_Name: Tile0_0
-  m_TagString: Untagged
+  m_Name: Tile
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   isPopulatedByPlayer: 0
   isPopulatedByAi: 0
   phasing: 0
-  numberOfTilesInPlay: 35
+  numberOfTilesInPlay: 0

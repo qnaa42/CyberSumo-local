@@ -7,7 +7,7 @@ namespace GPC
 {
     public class Tile : MonoBehaviour
     {
-        public List<TileClass> thisTile = new List<TileClass>(1);
+        public List<TileClass> thisTile = new List<TileClass>();
         public int thisId;
 
         public int horizontal;
@@ -20,7 +20,6 @@ namespace GPC
         // Start is called before the first frame update
         void Start()
         {
-            thisTile.Capacity = 1;
             thisTile[0] = TileDatabase.TileList[thisId];
         }
 
@@ -33,6 +32,15 @@ namespace GPC
             isPopulatedByPlayer = thisTile[0].isPopulatedByPlayer;
             isPopulatedByAi = thisTile[0].isPopulatedByAi;
             phasing = thisTile[0].phasing;
+
+
+            if (this.tag == "Clone")
+            {
+                thisTile[0] = Sumo_GridManager.staticTileDeck[numberOfTilesInPlay - 1];
+                numberOfTilesInPlay -= 1;
+                Sumo_GridManager.numberOfTiles -= 1;
+                this.tag = "Untagged";
+            }
         }
     }
 }

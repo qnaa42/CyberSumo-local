@@ -15,6 +15,8 @@ public class Sumo_GridManager : MonoBehaviour
 
     public static int numberOfTiles;
 
+    public GameObject[] Clones;
+
     public int x;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class Sumo_GridManager : MonoBehaviour
         numberOfTiles = 35;
         for (int i = 0; i < numberOfTiles; i ++)
         {
-            tileDeck[i] = TileDatabase.TileList[0];
+            tileDeck[i] = TileDatabase.TileList[i];
         }
         
     }

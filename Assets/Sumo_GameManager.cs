@@ -17,6 +17,9 @@ public class Sumo_GameManager : BaseGameManager
 	private GameObject card;
 	private GameObject thiscard;
 
+	public GameObject TileToBoard;
+	public GameObject GridArea;
+
 
 
 
@@ -59,6 +62,7 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.loaded:
 				isPlayable = false;
+
 				Loaded();
 				SetTargetState(Game.State.gameStarting);		
 				break;
@@ -70,6 +74,7 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.gameStarted:
 				GameStarted();
+				DrawGrid();
 				break;
 
 			case Game.State.gamePlaying:
@@ -258,6 +263,16 @@ public class Sumo_GameManager : BaseGameManager
 			SetTargetState(Game.State.idle);
         }
 	}
+	IEnumerator DrawGrid()
+    {
+		for (int i = 0; i <=34; i++)
+        {
+			yield return new WaitForSeconds(0);
+			GameObject _tile = Instantiate(TileToBoard, transform.position, transform.rotation);
+			_tile.transform.SetParent(GridArea.transform, true);
+			Debug.Log("Here");
+        }
+    }
 	public void Draw5Card()
     {
 		if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
@@ -271,5 +286,9 @@ public class Sumo_GameManager : BaseGameManager
 		{
 			StartCoroutine(Draw1Cards());
 		}	
+    }
+	public void DrawGridOnStart()
+    {
+		StartCoroutine(DrawGrid());
     }
 }

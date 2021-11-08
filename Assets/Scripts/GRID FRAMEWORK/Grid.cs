@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour
 {
     void Start()
     {
-        GridClass grid = new GridClass(7, 5, 150f);
+//        GridClass grid = new GridClass(7, 5, 150f);
         
     }
     void Update()
