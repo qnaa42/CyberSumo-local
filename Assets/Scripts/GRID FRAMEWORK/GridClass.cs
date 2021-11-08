@@ -30,19 +30,12 @@ public class GridClass
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-
-                
-                //UtilsClass.CreateWorldText(gridArray[x, y].ToString(), Grid.transform, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) *0.5f, 50, Color.black, TextAnchor.MiddleCenter);
-               // Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.black, 100f);
-              //  Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.black, 100f);
-
-
-
-                DebugImage[x,y] = UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white);
+                DebugImage[x,y] = UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white, x, y, false, false, 0, out int _Horizontal, out int _Vertical);
                 GameObject thisTile = GameObject.Find("Tile" + x + "/" + y);
                 thisTile.gameObject.transform.SetParent(Grid.transform, true);
             }
         }
+        SetValue(1, 1, 24);
     }
 
     private Vector3 GetWorldPosition(int x, int y)
@@ -50,12 +43,31 @@ public class GridClass
         return new Vector3(x, y) * cellSize;
     }
 
-    public void SetValue(int x, int y, int value)
+    private void GetXY(Vector3 worldPosition, out int x, out int y)
     {
-        if (x >= 0 && y <= 0 && x < Horizontal && y < Vertical)
+        x = Mathf.FloorToInt(Input.mousePosition.x / cellSize);
+        y = Mathf.FloorToInt(Input.mousePosition.y / cellSize);
+    }
+
+    public void SetValue(int x, int y, int value )
+    {
+        if (x >= 0 && y >= 0 && x < Horizontal && y < Vertical)
         {
             gridArray[x, y] = value;
+            //           byte a = System.Convert.ToByte(value);
+            //            DebugImage[x, y].GetComponent<Image>().color = new Color32(a, a, a, a );
+            DebugImage[x, y].gameObject.transform.GetChild(0).GetComponent<Text>().text = value.ToString();
+            Debug.Log("Here");
+                
         }
+    }
+    public void SetValue1(Vector3 worldPosition, int value)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        SetValue(x, y, value);
+        Debug.Log("Here" + x + "/" + y);
+
     }
 
 }

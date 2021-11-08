@@ -75,7 +75,7 @@ namespace CodeMonkey.Utils {
             return gameObject;
         }
 
-        public static GameObject CreateWorldImage(Transform parent, string name, Sprite sprite, Vector3 localPosition, Vector3 localSize, Color color)
+        public static GameObject CreateWorldImage(Transform parent, string name, Sprite sprite, Vector3 localPosition, Vector3 localSize, Color color, int Horizontal, int Vertical, bool IsPopulatedByPlayer, bool IsPopulatedByAi, int Phasing, out int _Horizontal, out int _Vertical)
         {
             GameObject gameObject = new GameObject(name, typeof(Image));
             Transform transform = gameObject.transform;
@@ -87,9 +87,38 @@ namespace CodeMonkey.Utils {
             Image image = gameObject.GetComponent<Image>();
             image.sprite = sprite;
             image.color = color;
-            gameObject.AddComponent<Tile>();
+            GameObject Child = new GameObject("Child", typeof(Text));
+            Transform ChildTransform = Child.transform;
+            ChildTransform.gameObject.transform.SetParent(transform, true);
+            ChildTransform.transform.position = gameObject.transform.position;
+            Text text = Child.GetComponent<Text>();
+            text.color = new Color32(0, 0, 0, 0);
+            text.text = "Nothing";
+            
+ //           gameObject.AddComponent<Text>();
+            
+            Tile tile = gameObject.AddComponent<Tile>();
+            tile.horizontal = Horizontal;
+            tile.vertical = Vertical;
+            tile.isPopulatedByPlayer = IsPopulatedByPlayer;
+            tile.isPopulatedByAi = IsPopulatedByAi;
+            tile.phasing = Phasing;
+            EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
+
+ //           EventTrigger _trigger = gameObject.GetComponent<EventTrigger>();
+ //           EventTrigger.Entry entry = new EventTrigger.Entry();
+ //           entry.eventID = EventTriggerType.PointerClick;
+ //           entry.callback.AddListener((data => { OnPointerClickDelegate((PointerEventData)data); }));
+ //           trigger.triggers.Add(entry);
+            _Horizontal = tile.horizontal;
+            _Vertical = tile.vertical;
             return gameObject;
+            
+
+           
+
         }
+
 
         // Create a Sprite in the World with Button_Sprite, no parent
         public static Button_Sprite CreateWorldSpriteButton(string name, Sprite sprite, Vector3 localPosition, Vector3 localScale, int sortingOrder, Color color) {
