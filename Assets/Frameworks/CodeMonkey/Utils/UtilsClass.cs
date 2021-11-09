@@ -75,7 +75,7 @@ namespace CodeMonkey.Utils {
             return gameObject;
         }
 
-        public static GameObject CreateWorldImage(Transform parent, string name, Sprite sprite, Vector3 localPosition, Vector3 localSize, Color color, int Horizontal, int Vertical, bool IsPopulatedByPlayer, bool IsPopulatedByAi, int Phasing, out int _Horizontal, out int _Vertical)
+        public static GameObject CreateWorldImage(Transform parent, string name, Sprite sprite, Vector3 localPosition, Vector3 localSize, Color color, int Horizontal, int Vertical, bool IsPopulatedByPlayer, bool IsPopulatedByAi, int Phasing, out int _Horizontal, out int _Vertical, Vector2 colliderScale)
         {
             GameObject gameObject = new GameObject(name, typeof(Image));
             Transform transform = gameObject.transform;
@@ -83,19 +83,19 @@ namespace CodeMonkey.Utils {
             rt.sizeDelta = localSize;
             transform.SetParent(parent, false);
             transform.localPosition = localPosition;
-           // transform.localScale = localScale;
+
             Image image = gameObject.GetComponent<Image>();
             image.sprite = sprite;
             image.color = color;
-            GameObject Child = new GameObject("Child", typeof(Text));
-            Transform ChildTransform = Child.transform;
-            ChildTransform.gameObject.transform.SetParent(transform, true);
-            ChildTransform.transform.position = gameObject.transform.position;
-            Text text = Child.GetComponent<Text>();
-            text.color = new Color32(0, 0, 0, 0);
-            text.text = "Nothing";
+//            GameObject Child = new GameObject("Child", typeof(Text));
+//            Transform ChildTransform = Child.transform;
+//            ChildTransform.gameObject.transform.SetParent(transform, true);
+//            ChildTransform.transform.position = gameObject.transform.position;
+//            Text text = Child.GetComponent<Text>();
+//            text.color = new Color32(0, 0, 0, 0);
+//            text.text = "Nothing";
             
- //           gameObject.AddComponent<Text>();
+
             
             Tile tile = gameObject.AddComponent<Tile>();
             tile.horizontal = Horizontal;
@@ -104,12 +104,17 @@ namespace CodeMonkey.Utils {
             tile.isPopulatedByAi = IsPopulatedByAi;
             tile.phasing = Phasing;
             EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
+            BoxCollider2D collider = gameObject.AddComponent<BoxCollider2D>();
+            collider.size = colliderScale;
+            gameObject.transform.gameObject.tag = "Tile";
+            gameObject.transform.gameObject.layer = 9;
 
- //           EventTrigger _trigger = gameObject.GetComponent<EventTrigger>();
- //           EventTrigger.Entry entry = new EventTrigger.Entry();
- //           entry.eventID = EventTriggerType.PointerClick;
- //           entry.callback.AddListener((data => { OnPointerClickDelegate((PointerEventData)data); }));
- //           trigger.triggers.Add(entry);
+            GridLayoutGroup layoutGroup = gameObject.AddComponent<GridLayoutGroup>();
+            layoutGroup.cellSize = colliderScale;
+            layoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+            layoutGroup.constraintCount = 1;
+
+
             _Horizontal = tile.horizontal;
             _Vertical = tile.vertical;
             return gameObject;

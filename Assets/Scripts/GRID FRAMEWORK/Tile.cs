@@ -42,9 +42,8 @@ namespace GPC
 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+//        void Update()
+//        {
 
             //            numberOfTilesInPlay = Sumo_GridManager.numberOfTiles;
             //            horizontal = thisTile[0].horizontal;
@@ -61,6 +60,20 @@ namespace GPC
             //               Sumo_GridManager.numberOfTiles -= 1;
             //               this.tag = "Untagged";
             //           }
+ //       }
+        public void OnColliderStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                isPopulatedByPlayer = true;
+            }
+        }
+        public void OnColliderExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                isPopulatedByPlayer = false;
+            }
         }
     }
 }

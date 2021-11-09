@@ -41,7 +41,7 @@ namespace GPC
 				Init();
 
 			UserData newUser = new UserData();
-
+			
 			newUser.id = global_userDatas.Count;
 			newUser.playerName = "Anonymous";
 			newUser.level = 1;
@@ -52,8 +52,8 @@ namespace GPC
 			newUser.MoveNow = 1;
 			newUser.HandSize = 7;
 			newUser.HandNow = 0;
-			newUser.PosHorizontal = 5;
-			newUser.PosVertical = 3;
+			newUser.PosHorizontal = 3;
+			newUser.PosVertical = 2;
 			newUser.isFinished = false;
 			global_userDatas.Add(newUser);
 

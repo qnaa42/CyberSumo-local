@@ -236,7 +236,7 @@ Transform:
   - {fileID: 1275907031}
   - {fileID: 1838355787}
   m_Father: {fileID: 1214139806}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50068771
 GameObject:
@@ -958,7 +958,8 @@ GameObject:
   m_Component:
   - component: {fileID: 178273575}
   - component: {fileID: 178273576}
-  m_Layer: 5
+  - component: {fileID: 178273577}
+  m_Layer: 9
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,12 +973,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178273574}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1607071270}
-  m_RootOrder: 0
+  m_Father: {fileID: 1214139806}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -996,6 +997,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6f4082eb0890b4dac2489186dc26fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &178273577
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178273574}
+  m_CullTransparentMesh: 1
 --- !u!1 &212696919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1199,7 @@ RectTransform:
   - {fileID: 3129197211555571498}
   - {fileID: 3129197211198212170}
   m_Father: {fileID: 1214139806}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1535,8 +1544,10 @@ MonoBehaviour:
   Card: {fileID: 3129197210217002601, guid: cab51b4e4bbc3024b822a07292819928, type: 3}
   CardToHand: {fileID: 4244840440997881756, guid: d0be52d3d379cc641a9eff0f1a334b2d, type: 3}
   ButtonHandler: {fileID: 47170299}
+  Tile: {fileID: 0}
   TileToBoard: {fileID: 3275024660862351524, guid: 4634951cacc9b8b42971d7a24f752564, type: 3}
   GridArea: {fileID: 0}
+  PlayerPrefab: {fileID: 4383720555858137531, guid: dba19539fc26f09418a4c45afcca97eb, type: 3}
   _uiManager: {fileID: 375001464}
   _userManager: {fileID: 1246203075}
   _playerStats: {fileID: 1246203076}
@@ -1803,7 +1814,7 @@ RectTransform:
   - {fileID: 212696920}
   - {fileID: 843575171}
   m_Father: {fileID: 1214139806}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3048,6 +3059,7 @@ RectTransform:
   - {fileID: 2135248158}
   - {fileID: 886273224}
   - {fileID: 678498680}
+  - {fileID: 178273575}
   - {fileID: 2018092472}
   - {fileID: 47170300}
   - {fileID: 311915653}
@@ -3183,7 +3195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd3fff1d61db43238725447e69c33c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  didInit: 0
+  didInit: 1
 --- !u!114 &1246203076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3198,7 +3210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   didInit: 0
   canControl: 1
-  _myDataManager: {fileID: 1246203075}
+  _myDataManager: {fileID: 375001462}
   myID: 0
   disableAutoPlayerListAdd: 0
 --- !u!1001 &1263504669
@@ -4203,8 +4215,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 178273575}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5146,7 +5157,7 @@ RectTransform:
   - {fileID: 786653382}
   - {fileID: 1677639475}
   m_Father: {fileID: 1214139806}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

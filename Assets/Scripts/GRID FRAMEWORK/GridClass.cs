@@ -30,7 +30,7 @@ public class GridClass
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                DebugImage[x,y] = UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white, x, y, false, false, 0, out int _Horizontal, out int _Vertical);
+                DebugImage[x,y] = UtilsClass.CreateWorldImage(Grid.transform, "Tile" + x + "/" + y, Resources.Load<Sprite>("Tile"), GetWorldPosition(x, y), new Vector2(150,150), Color.white, x, y, false, false, 0, out int _Horizontal, out int _Vertical, new Vector2(150,150));
                 GameObject thisTile = GameObject.Find("Tile" + x + "/" + y);
                 thisTile.gameObject.transform.SetParent(Grid.transform, true);
             }
@@ -56,7 +56,7 @@ public class GridClass
             gridArray[x, y] = value;
             //           byte a = System.Convert.ToByte(value);
             //            DebugImage[x, y].GetComponent<Image>().color = new Color32(a, a, a, a );
-            DebugImage[x, y].gameObject.transform.GetChild(0).GetComponent<Text>().text = value.ToString();
+//            DebugImage[x, y].gameObject.transform.GetChild(0).GetComponent<Text>().text = value.ToString();
             Debug.Log("Here");
                 
         }

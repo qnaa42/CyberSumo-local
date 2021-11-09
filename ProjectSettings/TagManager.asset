@@ -8,6 +8,7 @@ TagManager:
   - DropZone
   - Clone
   - Card
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Cards
   - DropZones
   - CardZone
-  - 
-  - 
+  - Grid
+  - PlayerToken
   - 
   - 
   - 

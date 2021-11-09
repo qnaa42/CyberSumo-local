@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7309589468965693826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7309589468965693828}
+  - component: {fileID: 7309589468965693829}
+  - component: {fileID: 7309589468965693832}
+  - component: {fileID: 7309589468965693831}
+  - component: {fileID: 7309589468965693830}
+  - component: {fileID: 7309589468965693827}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7309589468965693828
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -208.86674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 360.74658, y: 1609.751}
+  m_SizeDelta: {x: 455.4932, y: 194.4982}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7309589468965693829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a2ff9c8cd33804eb1719a3999f748a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGameState: 2
+  targetGameState: 0
+  lastGameState: 0
+  OnLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameStarting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameEnding:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRestartGame:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUntap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnkeep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDraw:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerPlay1:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolveDMGPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerPlay2:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCleanUpPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameTurnPassPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIUntap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIUpkeep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrigger1:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAIResolveDMG:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrigger2:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAICleanUP:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameTurnPassAI:
+    m_PersistentCalls:
+      m_Calls: []
+  isPlayable: 0
+  PlayerArea: {fileID: 0}
+  CardZone: {fileID: 0}
+  Card: {fileID: 3129197210217002601, guid: cab51b4e4bbc3024b822a07292819928, type: 3}
+  CardToHand: {fileID: 4244840440997881756, guid: d0be52d3d379cc641a9eff0f1a334b2d, type: 3}
+  ButtonHandler: {fileID: 0}
+  Tile: {fileID: 0}
+  TileToBoard: {fileID: 3275024660862351524, guid: 4634951cacc9b8b42971d7a24f752564, type: 3}
+  GridArea: {fileID: 0}
+  PlayerPrefab: {fileID: 4383720555858137531, guid: dba19539fc26f09418a4c45afcca97eb, type: 3}
+  _uiManager: {fileID: 7309589468965693832}
+  _userManager: {fileID: 0}
+  _playerStats: {fileID: 0}
+  _grid: {fileID: 0}
+--- !u!114 &7309589468965693832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d320f764feee34983bb4542bbd7edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiManager: {fileID: 0}
+  _userManager: {fileID: 0}
+  _userStatsManager: {fileID: 0}
+  ResolveButton: {fileID: 0}
+  CancelButton: {fileID: 0}
+  PassButton: {fileID: 0}
+  CardZone: {fileID: 0}
+  currentStateText: {fileID: 0}
+  numbersOfCards: {fileID: 0}
+  idText: {fileID: 0}
+  hpText: {fileID: 0}
+  TypeText: {fileID: 0}
+  ManaNowText: {fileID: 0}
+  ManaMaxText: {fileID: 0}
+  MoveNowText: {fileID: 0}
+  MoveMaxText: {fileID: 0}
+  HandNowText: {fileID: 0}
+  HandMaxText: {fileID: 0}
+  PosHorizontalText: {fileID: 0}
+  PosVerticalText: {fileID: 0}
+--- !u!114 &7309589468965693831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02130c6f102f9042942e8f8361d0e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileObject: {fileID: 0}
+  profileSaveName: Game_ProfileData
+--- !u!114 &7309589468965693830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd3fff1d61db43238725447e69c33c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  didInit: 0
+--- !u!222 &7309589468965693827
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309589468965693826}
+  m_CullTransparentMesh: 1
