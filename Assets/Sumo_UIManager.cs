@@ -9,11 +9,18 @@ public class Sumo_UIManager : MonoBehaviour
     public Sumo_UIManager _uiManager;
     public BaseUserManager _userManager;
     public BasePlayerStatsController _userStatsManager;
+    public Sumo_GridManager _gridManager;
+
+    public GameObject playerToken;
 
     public GameObject ResolveButton;
     public GameObject CancelButton;
     public GameObject PassButton;
     public GameObject CardZone;
+    public GameObject UpButton;
+    public GameObject minusUpButton;
+    public GameObject RightButton;
+    public GameObject minusRightButton;
 
     public Text currentStateText;
     public Text numbersOfCards;
@@ -37,10 +44,12 @@ public class Sumo_UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     public void Update()
     {
+        playerToken = GameObject.Find("PlayerToken(Clone)");
 //PLAYER STATS BOX
 
         hpText.text = "" + _userStatsManager.GetHealth().ToString();
@@ -67,6 +76,10 @@ public class Sumo_UIManager : MonoBehaviour
                 ResolveButton.SetActive(true);
                 CancelButton.SetActive(true);
                 PassButton.SetActive(false);
+                UpButton.SetActive(false);
+                minusUpButton.SetActive(false);
+                RightButton.SetActive(false);
+                minusRightButton.SetActive(false);
 
             }
         }
@@ -75,7 +88,27 @@ public class Sumo_UIManager : MonoBehaviour
             ResolveButton.SetActive(false);
             CancelButton.SetActive(false);
             PassButton.SetActive(true);
+            UpButton.SetActive(true);
+            minusUpButton.SetActive(true);
+            RightButton.SetActive(true);
+            minusRightButton.SetActive(true);
         }
         
+    }
+    public void ClickMoveUp()
+    {
+        _gridManager.MoveOneTile("up", 1, playerToken);
+    }
+    public void OnClickMinusUp()
+    {
+        _gridManager.MoveOneTile("-up", 1, playerToken);
+    }
+    public void OnClickRight()
+    {
+        _gridManager.MoveOneTile("right", 1, playerToken);
+    }
+    public void OnClickMinusRight()
+    {
+        _gridManager.MoveOneTile("-right", 1, playerToken);
     }
 }

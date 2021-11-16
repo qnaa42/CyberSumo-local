@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GPC;
 
 public class Sumo_GridManager : MonoBehaviour
 {
@@ -11,11 +12,16 @@ public class Sumo_GridManager : MonoBehaviour
     //    }
 
     public List<TileClass> tileDeck = new List<TileClass>();
-    public static List<TileClass> staticTileDeck = new List<TileClass>(); 
+    public static List<TileClass> staticTileDeck = new List<TileClass>();
+
+
+    private GameObject TileToMove;
 
     public static int numberOfTiles;
 
     public GameObject[] Clones;
+
+    public BasePlayerStatsController _playerStats;
 
     public int x;
     // Start is called before the first frame update
@@ -33,5 +39,39 @@ public class Sumo_GridManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MoveOneTile(string direction, int anAmount, GameObject controller)
+    {
+//        int horizontal = _playerStats.GetPosHorizontal();
+//        int vertical = -_playerStats.GetPosVertical();
+        if (direction == "up")
+        {
+            TileToMove = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + (_playerStats.GetPosVertical()+ anAmount));
+            Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
+            controller.transform.position = tileToMoveTransform.transform.position;
+            controller.transform.SetParent(tileToMoveTransform, true);
+        }
+        if(direction == "-up")
+        {
+            TileToMove = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + (_playerStats.GetPosVertical() - anAmount));
+            Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
+            controller.transform.position = tileToMoveTransform.transform.position;
+            controller.transform.SetParent(tileToMoveTransform, true);
+        }
+        if(direction == "right")
+        {
+            TileToMove = GameObject.Find("Tile" + (_playerStats.GetPosHorizontal() + anAmount) + "/" + _playerStats.GetPosVertical());
+            Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
+            controller.transform.position = tileToMoveTransform.transform.position;
+            controller.transform.SetParent(tileToMoveTransform, true);
+        }
+        if(direction == "-right")
+        {
+            TileToMove = GameObject.Find("Tile" + (_playerStats.GetPosHorizontal() - anAmount) + "/" + _playerStats.GetPosVertical());
+            Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
+            controller.transform.position = tileToMoveTransform.transform.position;
+            controller.transform.SetParent(tileToMoveTransform, true);
+        }
     }
 }

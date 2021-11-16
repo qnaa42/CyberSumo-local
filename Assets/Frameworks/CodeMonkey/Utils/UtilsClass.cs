@@ -106,6 +106,7 @@ namespace CodeMonkey.Utils {
             EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
             BoxCollider2D collider = gameObject.AddComponent<BoxCollider2D>();
             collider.size = colliderScale;
+            collider.isTrigger = true;
             gameObject.transform.gameObject.tag = "Tile";
             gameObject.transform.gameObject.layer = 9;
 

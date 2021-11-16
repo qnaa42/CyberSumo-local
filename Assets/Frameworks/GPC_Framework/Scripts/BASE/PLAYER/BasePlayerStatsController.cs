@@ -8,7 +8,6 @@ namespace GPC
 
 	public class BasePlayerStatsController : ExtendedCustomMonoBehaviour
 	{
-		public static Sumo_GameManager PlayerStats { get; private set; }
 
 		public BaseUserManager _myDataManager;
 		public int myID;
@@ -340,7 +339,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
-			_myDataManager.ReducePosVertical(myID, anAmount);
+			_myDataManager.SetPosVertical(myID, anAmount);
         }
 
 
