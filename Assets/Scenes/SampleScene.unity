@@ -3483,6 +3483,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1137146015}
+  - component: {fileID: 1137146018}
+  - component: {fileID: 1137146017}
+  - component: {fileID: 1137146016}
   m_Layer: 0
   m_Name: AI Manager
   m_TagString: Untagged
@@ -3504,6 +3507,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1137146016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137146014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7403bfda69c707d4fa56cbf29cf327b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  didInit: 0
+--- !u!114 &1137146017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137146014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6ec5a6b78d9fa4daceea6724031984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  didInit: 0
+  canControl: 1
+  _aiDataManager: {fileID: 1137146018}
+  myID: 0
+--- !u!114 &1137146018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137146014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7403bfda69c707d4fa56cbf29cf327b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  didInit: 0
 --- !u!1 &1214139802
 GameObject:
   m_ObjectHideFlags: 0
