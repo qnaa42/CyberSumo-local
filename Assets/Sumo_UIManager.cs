@@ -10,6 +10,7 @@ public class Sumo_UIManager : MonoBehaviour
     public BaseUserManager _userManager;
     public BasePlayerStatsController _userStatsManager;
     public Sumo_GridManager _gridManager;
+    public BaseAiStatsController _aiStats;
 
     public GameObject playerToken;
 
@@ -37,6 +38,8 @@ public class Sumo_UIManager : MonoBehaviour
     public Text HandMaxText;
     public Text PosHorizontalText;
     public Text PosVerticalText;
+
+
 
 
 

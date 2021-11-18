@@ -39,18 +39,22 @@ namespace GPC
 
             AiData newAi = new AiData();
 
-            newAi.id = 0;
+            newAi.id = global_aiDatas.Count;
             newAi.enemyName = "default";
 
             newAi.level = 1;
             newAi.health = 20;
             newAi.type = 0;
 
-            newAi.actionCounter = 2;
-            newAi.moveCounter = 3;
+            newAi.actionCounterNow = 0;
+            newAi.actionCounterFull = 2;
+            newAi.moveCounterNow = 0;
+            newAi.actionCounterFull = 3;
 
             newAi.posHorizontal = 3;
-            newAi.posVertical = 4;
+            newAi.posVertical = 0;
+
+            global_aiDatas.Add(newAi);
 
             return newAi.id;
         }
@@ -139,70 +143,136 @@ namespace GPC
             return global_aiDatas[id].type;
         }
 
-//ACTION COUNTER
-        public int GetAiActionCounter(int id)
+//ACTION COUNTER NOW
+        public int GetAiActionCounterNow(int id)
         {
             if (!didInit)
                 Init();
 
-            return global_aiDatas[id].actionCounter;
+            return global_aiDatas[id].actionCounterNow;
         }
 
-        public void AddAiActionCounter(int id, int num)
+        public void AddAiActionCounterNow(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].actionCounter += num;
+            global_aiDatas[id].actionCounterNow += num;
         }
 
-        public void ReduceAiActionCounter(int id, int num)
+        public void ReduceAiActionCounterNow(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].actionCounter -= num;
+            global_aiDatas[id].actionCounterNow -= num;
         }
 
-        public void SetAiActionCounter(int id, int num)
+        public void SetAiActionCounterNow(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].actionCounter = num;
+            global_aiDatas[id].actionCounterNow = num;
         }
 
-//MOVE COUNTER
-        public int GetAiMoveCounter(int id)
+//ACTION COUNTER FULL
+        public int GetAiActionCounterFull(int id)
         {
             if (!didInit)
                 Init();
 
-            return global_aiDatas[id].moveCounter;
+            return global_aiDatas[id].actionCounterFull;
         }
 
-        public void AddAiMoveCounter(int id, int num)
+        public void AddAiACtionCounterFull(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].moveCounter += num;
+            global_aiDatas[id].actionCounterFull += num;
         }
 
-        public void ReduceAiMoveCounter(int id, int num)
+        public void ReduceAiActionCounterFull(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].moveCounter -= num;
+            global_aiDatas[id].actionCounterFull -= num;
         }
 
-        public void SetAiMoveCounter(int id, int num)
+        public void SetAiActionCounterFull(int id, int num)
         {
             if (!didInit)
                 Init();
 
-            global_aiDatas[id].moveCounter = num;
+            global_aiDatas[id].actionCounterFull = num;
+        }
+
+//MOVE COUNTER NOW
+        public int GetAiMoveCounterNow(int id)
+        {
+            if (!didInit)
+                Init();
+
+            return global_aiDatas[id].moveCounterNow;
+        }
+
+        public void AddAiMoveCounterNow(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterNow += num;
+        }
+
+        public void ReduceAiMoveCounterNow(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterNow -= num;
+        }
+
+        public void SetAiMoveCounterNow(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterNow = num;
+        }
+
+//MOVE COUNTER FULL
+        public int GetAiMoveCounterFull(int id)
+        {
+            if (!didInit)
+                Init();
+
+            return global_aiDatas[id].actionCounterFull;
+        }
+
+        public void AddAiMoveCounterFull(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterFull += num;
+        }
+
+        public void ReduceAiMoveCounterFull(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterFull = num;
+        }
+
+        public void SetAiMoveCounterFull(int id, int num)
+        {
+            if (!didInit)
+                Init();
+
+            global_aiDatas[id].moveCounterFull = num;
         }
 
 //AI POS HORIZONTAL

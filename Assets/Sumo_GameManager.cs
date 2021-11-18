@@ -22,6 +22,7 @@ public class Sumo_GameManager : BaseGameManager
 	public GameObject GridArea;
 
 	public GameObject PlayerPrefab;
+	public GameObject AiPrefab;
 
 
 
@@ -30,7 +31,9 @@ public class Sumo_GameManager : BaseGameManager
 	public Sumo_UIManager _uiManager;
 	public BaseUserManager _userManager;
 	public BasePlayerStatsController _playerStats;
+	public BaseAiStatsController _aiStats;
 	public Grid _grid;
+	public myBaseAiController _aiController;
 
 	BaseUserManager _baseUserManager;
 
@@ -127,15 +130,20 @@ public class Sumo_GameManager : BaseGameManager
 //AI Turn
 
 			case Game.State.aiUntap:
+				_aiController.LookForPlayer();
+				_aiStats.SetAiMoveCounterNow(_aiStats.GetAiMoveCounterFull());
+				_aiStats.SetAiActionCounterNow(_aiStats.GetAiActionCounterFull());
 				break;
 
 			case Game.State.aiUpkeep:
 				break;
 
 			case Game.State.aiMove:
+				_aiController.MoveTowardsPlayer();
 				break;
 
 			case Game.State.aiPlay:
+				_aiController.AttackPlayer();
 				break;
 
 			case Game.State.playerTrigger1:
@@ -180,7 +188,9 @@ public class Sumo_GameManager : BaseGameManager
 		{
 			Debug.Log("GameStart");
 			StartCoroutine(Draw5Cards());
+			_aiStats.Init();
 			PlayerTokenSpawn();
+			AiSpawntest();
 		}
 		void RestartGameTest()
 		{
@@ -303,8 +313,21 @@ public class Sumo_GameManager : BaseGameManager
 		GameObject thisTile = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + _playerStats.GetPosVertical());
 		Transform transformTile = thisTile.transform;
 		Vector3 tileVector = new Vector3(transformTile.position.x, transformTile.position.y, transformTile.position.z);
-		Tile = Instantiate(PlayerPrefab, tileVector, transformTile.rotation);
-		Tile.transform.SetParent(transformTile, true);
+		GameObject player = Instantiate(PlayerPrefab, tileVector, transformTile.rotation);
+		player.transform.SetParent(transformTile, true);
+		}
+
+	//To remove later
+		public void AiSpawntest()
+		{
+		Debug.Log("AiSpawn");
+		GameObject thisTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + _aiStats.GetAiPosVertical());
+		Transform transformTile = thisTile.transform;
+		Vector3 tileVector = new Vector3(transformTile.position.x, transformTile.position.y, transform.position.z);
+		GameObject ai = Instantiate(AiPrefab, tileVector, transformTile.rotation);
+		ai.transform.SetParent(transformTile, true);
+		_aiController.LookForPlayer();
+
 		}
 	}
 

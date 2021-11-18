@@ -126,69 +126,132 @@ namespace GPC
             _aiDataManager.SetAiType(myID, anAmount);
         }
 
-//ACTION COUNTER
-        public int GetAiActionCounter()
+//ACTION COUNTER NOW
+        public int GetAiActionCounterNow()
         {
             if (!didInit)
                 Init();
 
-            return _aiDataManager.GetAiActionCounter(myID);
+            return _aiDataManager.GetAiActionCounterNow(myID);
         }
         
-        public virtual void AddAiActionCounter(int anAmount)
+        public virtual void AddAiActionCounterNow(int anAmount)
         {
             if (!didInit)
                 Init();
 
-            _aiDataManager.AddAiActionCounter(myID, anAmount);
+            _aiDataManager.AddAiActionCounterNow(myID, anAmount);
         }
 
-        public virtual void ReduceAiActionCounter(int anAmount)
+        public virtual void ReduceAiActionCounterNow(int anAmount)
         {
             if (!didInit)
                 Init();
 
-            _aiDataManager.ReduceAiActionCounter(myID, anAmount);
+            _aiDataManager.ReduceAiActionCounterNow(myID, anAmount);
         }
 
-        public virtual void SetAiActionCounter(int anAmount)
+        public virtual void SetAiActionCounterNow(int anAmount)
         {
             if (!didInit)
                 Init();
 
-            _aiDataManager.SetAiActionCounter(myID, anAmount);
+            _aiDataManager.SetAiActionCounterNow(myID, anAmount);
         }
 
-//MOVE COUNTER
-        public int GetAiMoveCounter()
+//ACTION COUNTER FULL
+        public int GetAiActionCounterFull()
         {
             if (!didInit)
                 Init();
 
-            return _aiDataManager.GetAiMoveCounter(myID);
+            return _aiDataManager.GetAiActionCounterFull(myID);
         }
 
-        public virtual void AddAiMoveCounter(int anAmount)
+        public virtual void AddAiActionCounterFull(int anAmount)
         {
             if (!didInit)
                 Init();
 
-            _aiDataManager.AddAiMoveCounter(myID, anAmount);
-        }
-        public virtual void ReduceAiMoveCounter(int anAmount)
-        {
-            if (!didInit)
-                Init();
-
-            _aiDataManager.ReduceAiMoveCounter(myID, anAmount);
+            _aiDataManager.AddAiACtionCounterFull(myID, anAmount);
         }
 
-        public virtual void SetAiMoveCounter(int anAmount)
+        public virtual void ReduceAiActionCounterFull(int anAmount)
         {
             if (!didInit)
                 Init();
 
-            _aiDataManager.SetAiMoveCounter(myID, anAmount);
+            _aiDataManager.ReduceAiActionCounterFull(myID, anAmount);
+        }
+
+        public virtual void SetAiActionCounterFull(int anAMount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.SetAiActionCounterFull(myID, anAMount);
+        }
+
+//MOVE COUNTER NOW
+        public int GetAiMoveCounterNow()
+        {
+            if (!didInit)
+                Init();
+
+            return _aiDataManager.GetAiMoveCounterNow(myID);
+        }
+
+        public virtual void AddAiMoveCounterNow(int anAmount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.AddAiMoveCounterNow(myID, anAmount);
+        }
+        public virtual void ReduceAiMoveCounterNow(int anAmount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.ReduceAiMoveCounterNow(myID, anAmount);
+        }
+
+        public virtual void SetAiMoveCounterNow(int anAmount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.SetAiMoveCounterNow(myID, anAmount);
+        }
+
+//MOVE COUNTER FULL
+        public int GetAiMoveCounterFull()
+        {
+            if (!didInit)
+                Init();
+
+            return _aiDataManager.GetAiMoveCounterFull(myID);
+        }
+
+        public virtual void AddAiMoveCounterFull(int anAmount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.AddAiMoveCounterFull(myID, anAmount);
+        }
+
+        public virtual void ReduceAiMoveCounterFull(int anAmount)
+        {
+            if (!didInit)
+                Init();
+
+            _aiDataManager.ReduceAiMoveCounterFull(myID, anAmount);
+        }
+
+        public virtual void SetAiMoveCounterFull(int anAmount)
+        {
+            _aiDataManager.SetAiMoveCounterFull(myID, anAmount);
         }
 
 //AI POS HORIZONTAL

@@ -10,8 +10,11 @@ namespace GPC
         public int health;
         public int type;
 
-        public int actionCounter;
-        public int moveCounter;
+        public int actionCounterNow;
+        public int actionCounterFull;
+
+        public int moveCounterNow;
+        public int moveCounterFull;
 
         public int posHorizontal;
         public int posVertical;
