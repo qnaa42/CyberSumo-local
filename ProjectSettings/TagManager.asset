@@ -9,6 +9,7 @@ TagManager:
   - Clone
   - Card
   - Tile
+  - AI
   layers:
   - Default
   - TransparentFX
