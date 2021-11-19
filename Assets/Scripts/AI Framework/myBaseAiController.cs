@@ -43,6 +43,15 @@ namespace GPC
         public bool isPresentMinusRightTile;
         public bool isPresentMinusRight;
 
+        public bool isCentreTileUp;
+        public bool isCentreTileMinusUp;
+        public bool isCentreTileUpInLine;
+        public bool isCentreTileMinusUpInLine;
+        public bool isCentreTileRight;
+        public bool isCentreTileMinusRight;
+        public bool isCentreTileRightInLine;
+        public bool isCentreTileMinusRightInline;
+
         [Header("Tile Manager")]
         public GameObject thisTile;
         public GameObject targetTile;
@@ -278,7 +287,8 @@ namespace GPC
                 isPresentRight = false;
                 isPresentMinusRightTile = false;
                 isPresentMinusRight = false;
-
+                SetNumberOfTilesInBetweenHorizontal(_aiStats.GetAiPosHorizontal() - _tile.horizontal);
+                SetNumberOfTilesInBetweenVertical(_aiStats.GetAiPosVertical() - _tile.vertical);
             }
 
         }
@@ -286,12 +296,13 @@ namespace GPC
         {
             BaseAiStatsController _aiStats = aiStats.GetComponent<BaseAiStatsController>();
             GameObject tileOcuupiedByPlayer = Player.transform.parent.gameObject;
+            BasePlayerStatsController _playerStats = playerStats.GetComponent<BasePlayerStatsController>();
 
             for (int i = 0; i <= _aiStats.GetAiMoveCounterNow(); i++)
             {
                 GameObject tileOccupiedByAi = aiToken.transform.parent.gameObject;
 
-                if ((!isNotPresentInLine && !isPresentUpAdjTile && !isPresentMinusUpTile && !isPresentRightTile && !isPresentMinusRightTile && isPresentUp) || (isPresentMinusUp || isPresentRight || isPresentMinusRight))
+                if ((!isPresentUpAdjTile && !isPresentMinusUpTile && !isPresentRightTile && !isPresentMinusRightTile && isPresentUp) || (isNotPresentInLine|| isPresentMinusUp || isPresentRight || isPresentMinusRight))
                 {
                     if (isPresentUp && NumberOfTilesInBetweenHorizontal == 0 && NumberOfTilesInBetweenVertical != 0)
                     {
@@ -335,7 +346,7 @@ namespace GPC
                         LookForPlayer();
                         Debug.Log("Ai Move 1 Tile right");
                     }
-                    else if (isPresentRight && NumberOfTilesInBetweenHorizontal != 0 && NumberOfTilesInBetweenVertical == 0)
+                    else if (isPresentMinusRight && NumberOfTilesInBetweenHorizontal != 0 && NumberOfTilesInBetweenVertical == 0)
                     {
                         GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() - 1) + "/" + _aiStats.GetAiPosVertical());
                         Transform targetTileTransform = targetTile.transform;
@@ -348,6 +359,253 @@ namespace GPC
                         _aiStats.ReduceAiMoveCounterNow(1);
                         LookForPlayer();
                         Debug.Log("Ai Move 1 Tile minus right");
+                    }
+                    else if (isNotPresentInLine && NumberOfTilesInBetweenHorizontal != 0 && NumberOfTilesInBetweenVertical !=0)
+                    {
+                        GameObject centreTile = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + _playerStats.GetPosVertical());
+                        Tile centreTileClass = centreTile.GetComponent<Tile>();
+                        var centreTileHorizontal = centreTileClass.horizontal;
+                        var CentreTileVertical = centreTileClass.vertical;
+                        var x = _aiStats.GetAiPosHorizontal() - centreTileHorizontal;
+                        var y = _aiStats.GetAiPosVertical() - CentreTileVertical;
+                        if (x < 0)
+                        {
+                            if (y == 0)
+                            {
+                                isCentreTileRightInLine = true;
+                                isCentreTileMinusRightInline = false;
+                                isCentreTileUp = false;
+                                isCentreTileMinusUp = false;
+                                GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() + 1) + "/" + _aiStats.GetAiPosVertical());
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile right");
+                            }
+                            isCentreTileRight = true;
+                            isCentreTileMinusRight = false;
+                            x = -x;
+
+                        }
+                        else if (x > 0)
+                        {
+                            if (y == 0)
+                            {
+                                isCentreTileRightInLine = false;
+                                isCentreTileMinusRightInline = true;
+                                isCentreTileUp = false;
+                                isCentreTileMinusUp = false;
+                                GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() - 1) + "/" + _aiStats.GetAiPosVertical());
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile minus right");
+                            }
+                            isCentreTileRight = false;
+                            isCentreTileMinusRight = true;
+                        }
+                        if (y < 0)
+                        {
+                            if(x == 0)
+                            {
+                                isCentreTileRight = false;
+                                isCentreTileMinusRight = false;
+                                isCentreTileUpInLine = true;
+                                isCentreTileMinusUpInLine = false;
+                                GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() + 1));
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile up");
+                            }
+                            isCentreTileUp = true;
+                            isCentreTileMinusUp = false;
+                            y = -y;
+                        }
+                        else if (y > 0)
+                        {
+                            if(x == 0)
+                            {
+                                isCentreTileUpInLine = false;
+                                isCentreTileMinusUpInLine = true;
+                                isCentreTileUpInLine = true;
+                                isCentreTileMinusUpInLine = false;
+                                GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() - 1));
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile minus up");
+                            }
+                            isCentreTileUp = false;
+                            isCentreTileMinusUp = true;
+                        }
+                        if (x > y)
+                        {
+                            if(isCentreTileUp && !isCentreTileMinusUp)
+                            {
+                                GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() + 1));
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile up");
+                                //Ruszam w Gore
+                            }
+                            else if(!isCentreTileUp && isCentreTileMinusUp)
+                            {
+                                GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() - 1));
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile minus up");
+                                //ruszam w dol
+                            }
+                        }
+                        else if (x < y)
+                        {
+                            if(isCentreTileRight && !isCentreTileMinusRight)
+                            {
+                                GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() + 1) + "/" + _aiStats.GetAiPosVertical());
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile right");
+                                //ruszam w prawo
+                            }
+                            else if(!isCentreTileRight && isCentreTileMinusRight)
+                            {
+                                GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() - 1) + "/" + _aiStats.GetAiPosVertical());
+                                Transform targetTileTransform = targetTile.transform;
+                                aiToken.transform.position = targetTileTransform.transform.position;
+                                aiToken.transform.SetParent(targetTileTransform, true);
+                                GameObject nowTile = aiToken.transform.parent.gameObject;
+                                Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                _aiStats.ReduceAiMoveCounterNow(1);
+                                LookForPlayer();
+                                Debug.Log("Ai Move 1 Tile minus right");
+                                //ruszam w lewo
+                            }
+                        }
+                        else if (x == y)
+                        {
+                            int random = Random.Range(1, 100);
+                            if (random >= 0 && random <= 50)
+                            {
+                                if (isCentreTileUp && !isCentreTileMinusUp)
+                                {
+                                    GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() + 1));
+                                    Transform targetTileTransform = targetTile.transform;
+                                    aiToken.transform.position = targetTileTransform.transform.position;
+                                    aiToken.transform.SetParent(targetTileTransform, true);
+                                    GameObject nowTile = aiToken.transform.parent.gameObject;
+                                    Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                    _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                    _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                    _aiStats.ReduceAiMoveCounterNow(1);
+                                    LookForPlayer();
+                                    Debug.Log("Ai Move 1 Tile up");
+                                    //Ruszam w Gore
+                                }
+                                else if (!isCentreTileUp && isCentreTileMinusUp)
+                                {
+                                    GameObject targetTile = GameObject.Find("Tile" + _aiStats.GetAiPosHorizontal() + "/" + (_aiStats.GetAiPosVertical() - 1));
+                                    Transform targetTileTransform = targetTile.transform;
+                                    aiToken.transform.position = targetTileTransform.transform.position;
+                                    aiToken.transform.SetParent(targetTileTransform, true);
+                                    GameObject nowTile = aiToken.transform.parent.gameObject;
+                                    Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                    _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                    _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                    _aiStats.ReduceAiMoveCounterNow(1);
+                                    LookForPlayer();
+                                    Debug.Log("Ai Move 1 Tile minus up");
+                                    //ruszam w dol
+                                }
+
+
+                            }
+                            else if(random > 50 && random <= 100)
+                            {
+                                if (isCentreTileRight && !isCentreTileMinusRight)
+                                {
+                                    GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() + 1) + "/" + _aiStats.GetAiPosVertical());
+                                    Transform targetTileTransform = targetTile.transform;
+                                    aiToken.transform.position = targetTileTransform.transform.position;
+                                    aiToken.transform.SetParent(targetTileTransform, true);
+                                    GameObject nowTile = aiToken.transform.parent.gameObject;
+                                    Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                    _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                    _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                    _aiStats.ReduceAiMoveCounterNow(1);
+                                    LookForPlayer();
+                                    Debug.Log("Ai Move 1 Tile right");
+                                    //ruszam w prawo
+                                }
+                                else if (!isCentreTileRight && isCentreTileMinusRight)
+                                {
+                                    GameObject targetTile = GameObject.Find("Tile" + (_aiStats.GetAiPosHorizontal() - 1) + "/" + _aiStats.GetAiPosVertical());
+                                    Transform targetTileTransform = targetTile.transform;
+                                    aiToken.transform.position = targetTileTransform.transform.position;
+                                    aiToken.transform.SetParent(targetTileTransform, true);
+                                    GameObject nowTile = aiToken.transform.parent.gameObject;
+                                    Tile nowTileStats = nowTile.GetComponent<Tile>();
+                                    _aiStats.SetAiPosHorizontal(nowTileStats.horizontal);
+                                    _aiStats.SetAiPosVertical(nowTileStats.vertical);
+                                    _aiStats.ReduceAiMoveCounterNow(1);
+                                    LookForPlayer();
+                                    Debug.Log("Ai Move 1 Tile minus right");
+                                    //ruszam w lewo
+                                }
+
+                            }
+                        }
+
+
+
+
                     }
                     else
                     {
@@ -367,7 +625,7 @@ namespace GPC
             BasePlayerStatsController _playerStats = playerStats.GetComponent<BasePlayerStatsController>();
             for (int i = 0; i <= _aiStats.GetAiActionCounterNow(); i++)
             {
-                if ((!isNotPresentInLine && !isPresentUp && !isPresentMinusUp && !isPresentRight && !isPresentMinusRight) || (isPresentUpAdjTile || isPresentMinusUpTile || isPresentRight || isPresentRightTile))
+                if ((!isNotPresentInLine && !isPresentUp && !isPresentMinusUp && !isPresentRight && !isPresentMinusRight) && (isPresentUpAdjTile || isPresentMinusUpTile || isPresentRight || isPresentRightTile))
                 {
                     _playerStats.ReduceHealth(5);
                     _aiStats.ReduceAiActionCounterNow(1);
@@ -375,23 +633,67 @@ namespace GPC
 
                     if (isPresentUpAdjTile && NumberOfTilesInBetweenHorizontal == 0 && NumberOfTilesInBetweenVertical != 0)
                     {
-                        spellDeck.SimpleAttack(aiToken, "Up");
-                        _aiStats.ReduceAiActionCounterNow(1);
+                        int x = Random.Range(0, 100);
+                        if (x >= 0 && x <= 50)
+                        {
+                            spellDeck.SimpleAttack(aiToken, "Up");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
+                        if (x > 50 && x <= 100)
+                        {
+                            spellDeck.PushAndDiamonAttackPattern(aiToken, "Up");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
                     }
                     if (isPresentMinusUpTile && NumberOfTilesInBetweenHorizontal == 0 && NumberOfTilesInBetweenVertical != 0)
                     {
-                        spellDeck.SimpleAttack(aiToken, "minusUp");
-                        _aiStats.ReduceAiActionCounterNow(1);
+                        int x = Random.Range(0, 100);
+                        if (x >= 0 && x <= 50)
+                        {
+                            spellDeck.SimpleAttack(aiToken, "minusUp");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
+                        if (x > 50 && x <= 100)
+                        {
+                            spellDeck.PushAndDiamonAttackPattern(aiToken, "minusUp");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
                     }
                     if (isPresentRightTile && NumberOfTilesInBetweenHorizontal != 0 && NumberOfTilesInBetweenVertical == 0)
                     {
-                        spellDeck.SimpleAttack(aiToken, "Right");
-                        _aiStats.ReduceAiActionCounterNow(1);
+                        int x = Random.Range(0, 100);
+                        if (x >= 0 && x <= 50)
+                        {
+                            spellDeck.SimpleAttack(aiToken, "Right");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
+                        if (x > 50 && x <= 100)
+                        {
+                            spellDeck.PushAndDiamonAttackPattern(aiToken, "Right");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
                     }
                     if (isPresentMinusRightTile && NumberOfTilesInBetweenHorizontal != 0 && NumberOfTilesInBetweenVertical == 0)
                     {
-                        spellDeck.SimpleAttack(aiToken, "minusRight");
-                        _aiStats.ReduceAiActionCounterNow(1);
+                        int x = Random.Range(0, 100);
+                        if (x >= 0 && x <= 50)
+                        {
+                            spellDeck.SimpleAttack(aiToken, "minusRight");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
+                        if (x > 50 && x <= 100)
+                        {
+                            spellDeck.PushAndDiamonAttackPattern(aiToken, "minusRight");
+                            LookForPlayer();
+                            _aiStats.ReduceAiActionCounterNow(1);
+                        }
                     }
 
 

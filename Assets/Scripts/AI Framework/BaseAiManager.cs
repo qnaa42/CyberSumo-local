@@ -51,7 +51,7 @@ namespace GPC
             newAi.moveCounterNow = 0;
             newAi.actionCounterFull = 3;
 
-            newAi.posHorizontal = 3;
+            newAi.posHorizontal = 1;
             newAi.posVertical = 0;
 
             global_aiDatas.Add(newAi);
