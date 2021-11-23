@@ -13,6 +13,9 @@ namespace GPC
         //        public List<TileClass> thisTile = new List<TileClass>();
         private GameObject thisTile;
         private GameObject PlayerManager;
+        private GameObject AiManager;
+
+
         private int resolveCounter;
 
         public int thisId;
@@ -24,15 +27,20 @@ namespace GPC
         public int vertical;
         public bool isPopulatedByPlayer;
         public bool isPopulatedByAi;
+        public bool phasingPlacedByAi;
+        public bool phasingPlacedByPlayer;
         public int phasing;
+        public int phasingPower;
 
         public int numberOfTilesInPlay;
         // Start is called before the first frame update
         void Start()
         {
+            phasingPower = 10;
             resolveCounter = 1;
             thisTile = GameObject.Find("Tile" + horizontal + "/" + vertical);
             PlayerManager = GameObject.Find("Player Manager");
+            AiManager = GameObject.Find("AI Manager");
             EventTrigger trigger = gameObject.GetComponent<EventTrigger>();
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerClick;
@@ -73,31 +81,79 @@ namespace GPC
                 thisImage.color = new Color32(255, 255, 255, 255);
             }
           
-            if (Sumo_GameManager.instance.currentGameState == Game.State.playerUpkeep)
+            if (Sumo_GameManager.instance.currentGameState == Game.State.playerUpkeep || Sumo_GameManager.instance.currentGameState == Game.State.aiUpkeep)
             {
                 resolveCounter = 1;
             }
             if (Sumo_GameManager.instance.currentGameState == Game.State.playerResolveDMG && resolveCounter > 0)
             {
-                    if (phasing == 1)
+                    if (phasing == 1 && phasingPlacedByPlayer)
                     {
                         if (isPopulatedByPlayer)
                         {
                             GameObject playerToken = thisTile.gameObject.transform.GetChild(0).gameObject;
                             BasePlayerStatsController _playerStats = PlayerManager.GetComponent<BasePlayerStatsController>();
-                            _playerStats.ReduceHealth(1);
+                            _playerStats.ReduceHealth(phasingPower);
                             phasing--;
+                            if (phasing == 0)
+                            {
+                            phasingPlacedByPlayer = false;
+                            }
+                        
                         }
                         else
                         {
                             phasing--;
                         }                        
                     }
-                else if (phasing > 1)
+                else if (phasing > 1 && phasingPlacedByPlayer)
                 {
                     phasing--;
+                    if (phasing == 0)
+                    {
+                        phasingPlacedByPlayer = false;
+                    }
                 }
                 resolveCounter--;
+            }
+            if (Sumo_GameManager.instance.currentGameState == Game.State.aiResolveDMG && resolveCounter > 0)
+            {
+                if (phasing == 1 && phasingPlacedByAi)
+                {
+                    if (isPopulatedByAi)
+                    {
+                        GameObject aiToken = thisTile.gameObject.transform.GetChild(0).gameObject;
+                        BaseAiStatsController _aiStats = AiManager.GetComponent<BaseAiStatsController>();
+                        _aiStats.ReduceAiHealth(phasingPower);
+                        phasing--;
+                        if (phasing == 0)
+                        {
+                            phasingPlacedByAi = false;
+                        }
+
+                    }
+                    else
+                    {
+                        phasing--;
+                        if (phasing == 0)
+                        {
+                            phasingPlacedByAi = false;
+                        }
+                    }
+                }
+                else if (phasing > 1 && phasingPlacedByAi)
+                {
+                    phasing--;
+                    if (phasing == 0)
+                    {
+                        phasingPlacedByAi = false;
+                    }
+                }
+                resolveCounter--;
+                if (phasing == 0)
+                {
+                    phasingPlacedByAi = false;
+                }
             }
         }
 
@@ -124,7 +180,13 @@ namespace GPC
         {
             if (collision == true && collision.gameObject.tag == "Player")
             {
+                isPopulatedByAi = false;
                 isPopulatedByPlayer = true;
+            }
+            else if (collision == true && collision.gameObject.tag == "AI")
+            {
+                isPopulatedByAi = true;
+                isPopulatedByPlayer = false;
             }
         }
         public void OnTriggerExit2D(Collider2D collision)

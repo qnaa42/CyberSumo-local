@@ -45,33 +45,37 @@ public class Sumo_GridManager : MonoBehaviour
     {
 //        int horizontal = _playerStats.GetPosHorizontal();
 //        int vertical = -_playerStats.GetPosVertical();
-        if (direction == "up")
+        if (direction == "up" && _playerStats.GetMoveNow() > 0)
         {
             TileToMove = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + (_playerStats.GetPosVertical()+ anAmount));
             Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
             controller.transform.position = tileToMoveTransform.transform.position;
             controller.transform.SetParent(tileToMoveTransform, true);
+            _playerStats.ReduceMoveNow(1);
         }
-        if(direction == "-up")
+        if(direction == "-up" && _playerStats.GetMoveNow() > 0)
         {
             TileToMove = GameObject.Find("Tile" + _playerStats.GetPosHorizontal() + "/" + (_playerStats.GetPosVertical() - anAmount));
             Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
             controller.transform.position = tileToMoveTransform.transform.position;
             controller.transform.SetParent(tileToMoveTransform, true);
+            _playerStats.ReduceMoveNow(1);
         }
-        if(direction == "right")
+        if(direction == "right" && _playerStats.GetMoveNow() > 0)
         {
             TileToMove = GameObject.Find("Tile" + (_playerStats.GetPosHorizontal() + anAmount) + "/" + _playerStats.GetPosVertical());
             Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
             controller.transform.position = tileToMoveTransform.transform.position;
             controller.transform.SetParent(tileToMoveTransform, true);
+            _playerStats.ReduceMoveNow(1);
         }
-        if(direction == "-right")
+        if(direction == "-right" && _playerStats.GetMoveNow() > 0)
         {
             TileToMove = GameObject.Find("Tile" + (_playerStats.GetPosHorizontal() - anAmount) + "/" + _playerStats.GetPosVertical());
             Transform tileToMoveTransform = TileToMove.GetComponent<Transform>();
             controller.transform.position = tileToMoveTransform.transform.position;
             controller.transform.SetParent(tileToMoveTransform, true);
+            _playerStats.ReduceMoveNow(1);
         }
     }
 }

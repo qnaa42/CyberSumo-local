@@ -43,7 +43,7 @@ public class Sumo_CardManager : MonoBehaviour
         x = 0;
         for (int i = 0; i < deckSize; i++)
         {
-            x = Random.Range(1, 9);
+            x = Random.Range(1, 5);
             deck[i] = CardDataBase.cardList[x];
 
         }

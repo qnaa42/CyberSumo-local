@@ -9,6 +9,7 @@ namespace GPC
     {
         public List<CardClass> thisCard = new List<CardClass>();
         public int thisId;
+        public string type;
 
         public int id;
         public string cardName;
@@ -41,6 +42,7 @@ namespace GPC
         // Update is called once per frame
         void Update()
         {
+           
             numberOfCardsInDeck = Sumo_CardManager.deckSize;
             id = thisCard[0].id;
             cardName = thisCard[0].cardName;
@@ -48,12 +50,17 @@ namespace GPC
             power = thisCard[0].power;
             cardDescription = thisCard[0].cardDescirbtion;
             thisSprite = thisCard[0].thisImage;
+            if (id >=1 && id<5)
+            {
+                type = "Land";
+            }
 
             nameText.text = "" + cardName;
             costText.text = "" + cost;
             powerText.text = "" + power;
             descriptionText.text = "" + cardDescription;
             thatImage.sprite = thisSprite;
+
 
             if (thisCard[0].color == "Red")
             {

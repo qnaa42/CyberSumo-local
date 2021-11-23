@@ -207,7 +207,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
-			return global_userDatas[id].ManaFull;
+			return global_userDatas[id].MoveFull;
         }
 
 		public void AddMoveFull(int id, int num)
@@ -257,7 +257,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
-			global_userDatas[id].ManaNow = num;
+			global_userDatas[id].MoveNow = num;
         }
 
 //HAND SIZE

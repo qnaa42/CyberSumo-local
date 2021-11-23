@@ -329,5 +329,7 @@ public class Sumo_GameManager : BaseGameManager
 		_aiController.LookForPlayer();
 
 		}
-	}
+
+		
+}
 
