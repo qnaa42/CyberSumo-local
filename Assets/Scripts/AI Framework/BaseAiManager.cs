@@ -32,31 +32,32 @@ namespace GPC
 
             return global_aiDatas;
         }
-        public int AddNewAi()
+        public int AddNewAi(int Horizontal, int Vertical)
         {
-            if (!didInit)
-                Init();
 
-            AiData newAi = new AiData();
+                if (!didInit)
+                    Init();
+                AiData newAi = new AiData();
 
-            newAi.id = global_aiDatas.Count;
-            newAi.enemyName = "default";
+                newAi.id = global_aiDatas.Count;
+                newAi.enemyName = "default";
 
-            newAi.level = 1;
-            newAi.health = 20;
-            newAi.type = 0;
+                newAi.level = 1;
+                newAi.health = 20;
+                newAi.type = 0;
 
-            newAi.actionCounterNow = 0;
-            newAi.actionCounterFull = 2;
-            newAi.moveCounterNow = 0;
-            newAi.actionCounterFull = 3;
+                newAi.actionCounterNow = 0;
+                newAi.actionCounterFull = 2;
+                newAi.moveCounterNow = 0;
+                newAi.actionCounterFull = 3;
 
-            newAi.posHorizontal = 1;
-            newAi.posVertical = 0;
+                newAi.posHorizontal = Horizontal;
+                newAi.posVertical = Vertical;
 
-            global_aiDatas.Add(newAi);
+                global_aiDatas.Add(newAi);
 
-            return newAi.id;
+                return newAi.id;
+            
         }
 
 

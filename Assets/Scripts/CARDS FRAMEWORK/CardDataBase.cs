@@ -13,10 +13,10 @@ public class CardDataBase : MonoBehaviour
         cardList.Add(new CardClass(2, "Land2", 0, 0, "Add One Empty Mana Cell, or Add One Temporary Move", Resources.Load<Sprite>("2"), "Green"));
         cardList.Add(new CardClass(3, "Land3", 0, 0, "Add One Empty Mana cell", Resources.Load<Sprite>("3"), "Green"));
         cardList.Add(new CardClass(4, "Land4", 0, 0, "Add One Empty Move Cell", Resources.Load<Sprite>("4"), "Green"));
-        cardList.Add(new CardClass(5, "Mega Artefact", 4, 0, "Test Description", Resources.Load<Sprite>("5"), "Grey"));
-        cardList.Add(new CardClass(6, "Super Duper Artefact", 6, 0, "Test Description", Resources.Load<Sprite>("6"), "Grey"));
-        cardList.Add(new CardClass(7, "Attack", 2, 1, "Test Description", Resources.Load<Sprite>("7"), "Red"));
-        cardList.Add(new CardClass(8, "Better Attack", 3, 2, "Test Description", Resources.Load<Sprite>("8"), "Red"));
+        cardList.Add(new CardClass(5, "Better Attack", 3, 10, "Diamond Pattern Attack // Each Direction", Resources.Load<Sprite>("8"), "Red"));
+        cardList.Add(new CardClass(6, "Mega Artefact", 4, 0, "Test Description", Resources.Load<Sprite>("5"), "Grey"));
+        cardList.Add(new CardClass(7, "Super Duper Artefact", 6, 0, "Test Description", Resources.Load<Sprite>("6"), "Grey"));
+        cardList.Add(new CardClass(8, "Attack", 2, 1, "Test Description", Resources.Load<Sprite>("7"), "Red"));
         cardList.Add(new CardClass(9, "Best Attack", 6, 4, "Test Description", Resources.Load<Sprite>("9"), "Red"));
     }
 }

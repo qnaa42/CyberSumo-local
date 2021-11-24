@@ -10,6 +10,7 @@ namespace GPC
     {
         public BaseAiManager _aiDataManager;
         public int myID;
+        public int howManyAi;
 
         void Awake()
         {
@@ -19,9 +20,14 @@ namespace GPC
         {
             Debug.Log("INIT AI CONTROLLER");
 
+
             SetupAiDataManager();
             didInit = true;
-            _aiDataManager.AddNewAi();
+            for (int i = 0; i <= Sumo_GameManager.instance.NumberOfAi; i++)
+            {
+                _aiDataManager.AddNewAi(i, 0);
+            }
+
         }
 
         public virtual void SetAiDetails(int anID)
