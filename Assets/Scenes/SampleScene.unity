@@ -14297,6 +14297,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3792897193756115191, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792897193756115191, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792897193756115191, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792897193756115191, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -14309,7 +14321,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3129197211198212169}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9bf442d24c44b949be2ad289476b215, type: 3}
   m_Name: 
@@ -14336,6 +14348,7 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 3129197211912566707}
   frame: {fileID: 3129197210575539758}
+  borderFrame: {fileID: 0}
   numberOfCardsInDeck: 0
 --- !u!114 &3805968204122863691
 MonoBehaviour:
@@ -14344,7 +14357,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3129197211555571497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9bf442d24c44b949be2ad289476b215, type: 3}
   m_Name: 
@@ -14371,6 +14384,7 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 3129197211360270547}
   frame: {fileID: 3129197210014245198}
+  borderFrame: {fileID: 0}
   numberOfCardsInDeck: 0
 --- !u!114 &3805968204831383295
 MonoBehaviour:
@@ -14379,7 +14393,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3129197210040975773}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9bf442d24c44b949be2ad289476b215, type: 3}
   m_Name: 
@@ -14406,6 +14420,7 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 3129197210920484455}
   frame: {fileID: 3129197211729102842}
+  borderFrame: {fileID: 0}
   numberOfCardsInDeck: 0
 --- !u!114 &3805968205045482887
 MonoBehaviour:
@@ -14414,7 +14429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3129197210901666533}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9bf442d24c44b949be2ad289476b215, type: 3}
   m_Name: 
@@ -14441,6 +14456,7 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 3129197210135422239}
   frame: {fileID: 3129197211473976450}
+  borderFrame: {fileID: 0}
   numberOfCardsInDeck: 0
 --- !u!222 &4146317471098731452
 CanvasRenderer:

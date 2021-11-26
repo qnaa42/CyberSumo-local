@@ -53,6 +53,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetName(myID);
         }
 
@@ -60,6 +61,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetName(myID, aName);
 		}
 
@@ -68,6 +70,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetLevel(myID);
         }
 
@@ -75,6 +78,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetLevel(myID, anAmount);
         }
 
@@ -83,6 +87,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetHealth(myID);
 		}
 
@@ -90,6 +95,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddHealth(myID, anAmount);
 		}
 
@@ -97,6 +103,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceHealth(myID, anAmount);
 		}
 
@@ -104,6 +111,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetHealth(myID, anAmount);
 		}
 
@@ -112,6 +120,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetType(myID);
         }
 		
@@ -119,6 +128,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetLevel(myID, anAmount);
         }
 
@@ -127,6 +137,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetManaFull(myID);
         }
 
@@ -134,6 +145,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddManaFull(myID, anAmount);
         }
 		
@@ -141,6 +153,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceManaFull(myID, anAmount);
         }
 
@@ -148,6 +161,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetManaFull(myID, anAmount);
         }
 
@@ -156,6 +170,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetManaNow(myID);
 		}
 		
@@ -163,6 +178,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddManaNow(myID, anAmount);
         }
 
@@ -170,6 +186,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceManaNow(myID, anAmount);
         }
 
@@ -177,6 +194,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetManaNow(myID, anAmount);
         }
 
@@ -185,6 +203,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetMoveFull(myID);
         }
 
@@ -192,6 +211,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddMoveFull(myID, anAmount);
         }
 
@@ -199,6 +219,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceMoveFull(myID, anAmount);
         }
 
@@ -206,6 +227,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetMoveFull(myID, anAmount);
         }
 
@@ -214,6 +236,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetMoveNow(myID);
         }
 		
@@ -221,6 +244,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddMoveNow(myID, anAmount);
         }
 
@@ -228,6 +252,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceMoveNow(myID, anAmount);
         }
 
@@ -235,6 +260,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetMoveNow(myID, anAmount);
         }
 
@@ -243,6 +269,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetHandSize(myID);
         }
 
@@ -250,6 +277,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetHandSize(myID, anAmount);
         }
 
@@ -258,6 +286,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetHandNow(myID);
         }
 
@@ -265,6 +294,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddHandNow(myID, anAmount);
         }
 
@@ -272,6 +302,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReduceHandNow(myID, anAmount);
         }
 
@@ -279,6 +310,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetHandNow(myID, anAmount);
         }
 
@@ -288,6 +320,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetPosHorizontal(myID);
         }
 
@@ -295,6 +328,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddPosHorizontal(myID, anAmount);
         }
 
@@ -302,6 +336,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReducePosHorizontal(myID, anAmount);
         }
 
@@ -309,6 +344,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetPosHorizontal(myID, anAmount);
         }
 
@@ -318,6 +354,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return _myDataManager.GetPosVertical(myID);
         }
 
@@ -325,6 +362,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.AddPosVertical(myID, anAmount);
         }	
 		
@@ -332,6 +370,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.ReducePosVertical(myID, anAmount);
         }
 
@@ -339,17 +378,74 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			_myDataManager.SetPosVertical(myID, anAmount);
         }
 
+//MANA CARD COUNTER NOW
+		public int GetManaCardCounterNow()
+        {
+			if (!didInit)
+				Init();
 
+			return _myDataManager.GetManaCardCounterNow(myID);
+		}
 
+		public virtual void AddManaCardCounterNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
 
+			_myDataManager.AddManaCardCounterNow(myID, anAmount);
+		}
 
+		public virtual void ReduceManaCardCounterNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
 
+			_myDataManager.ReduceManaCardCounterNow(myID, anAmount);
+		}
 
+		public virtual void SetManaCardCounterNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
 
+			_myDataManager.SetManaCardCounterNow(myID, anAmount);
+		}
 
+//MANA CARD COUNTER FULL
+		public int GeteManaCardCounterFull()
+        {
+			if (!didInit)
+				Init();
 
+			return _myDataManager.GetManaCardCounterFull(myID);
+		}
+
+		public virtual void AddManaCardCounterFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.AddManaCardCounterFull(myID, anAmount);
+		}
+
+		public virtual void ReduceManaCardCounterFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.ReduceManaCardCounterFull(myID, anAmount);
+		}
+
+		public virtual void SetManaCardCounterFull(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.SetManaCardCounterFull(myID, anAmount);
+		}
 	}
 }

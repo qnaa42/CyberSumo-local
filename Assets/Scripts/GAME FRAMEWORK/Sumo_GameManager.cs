@@ -90,6 +90,7 @@ public class Sumo_GameManager : BaseGameManager
 				isPlayable = false;
 				_playerStats.SetManaNow(_playerStats.GetManaFull());
 				_playerStats.SetMoveNow(_playerStats.GetMoveFull());
+				_playerStats.SetManaCardCounterNow(_playerStats.GeteManaCardCounterFull());
 				break;
 
 			case Game.State.playerUpkeep:

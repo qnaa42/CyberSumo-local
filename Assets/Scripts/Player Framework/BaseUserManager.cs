@@ -54,6 +54,8 @@ namespace GPC
 			newUser.HandNow = 0;
 			newUser.PosHorizontal = 3;
 			newUser.PosVertical = 2;
+			newUser.ManaCardCounterNow = 1;
+			newUser.ManaCardCounterFull = 1;
 			newUser.isFinished = false;
 			global_userDatas.Add(newUser);
 
@@ -149,6 +151,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].ManaFull;
         }
 
@@ -156,6 +159,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaFull += num;
         }
 		
@@ -163,6 +167,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaFull -= num;
         }
 		
@@ -170,6 +175,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaFull = num;
         }
 
@@ -178,6 +184,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].ManaNow;
         }
 
@@ -185,6 +192,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaNow += num;
         }
 
@@ -192,6 +200,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaNow -= num;
         }
 
@@ -199,6 +208,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].ManaNow = num;
         }
 
@@ -207,6 +217,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].MoveFull;
         }
 
@@ -214,6 +225,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveFull += num;
         }
 
@@ -221,6 +233,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveFull -= num;
         }
 
@@ -228,6 +241,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveFull = num;
         }
 		
@@ -236,6 +250,7 @@ namespace GPC
         {
 			if(!didInit)
 				Init();
+
 			return global_userDatas[id].MoveNow;
         }
 
@@ -243,6 +258,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveNow += num;
         }
 
@@ -250,6 +266,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveNow -= num;
         }
 
@@ -257,6 +274,7 @@ namespace GPC
 		{
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].MoveNow = num;
         }
 
@@ -265,6 +283,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].HandSize;
         }
 
@@ -272,6 +291,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].HandSize = num;
         }
 
@@ -280,6 +300,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].HandNow;
         }
 
@@ -287,6 +308,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].HandNow += num;
         }
 
@@ -294,6 +316,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].HandNow -= num;
         }
 
@@ -301,6 +324,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].HandNow = num;
 		}
 
@@ -309,6 +333,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].PosHorizontal;
         }
 
@@ -316,6 +341,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosHorizontal += num;
         }
 
@@ -323,6 +349,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosHorizontal -= num;
         }
 
@@ -330,6 +357,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosHorizontal = num;
         }
 
@@ -339,6 +367,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			return global_userDatas[id].PosVertical;
         }
 
@@ -346,6 +375,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosVertical += num;
         }
 
@@ -353,6 +383,7 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosVertical -= num;
         }
 		
@@ -360,9 +391,75 @@ namespace GPC
         {
 			if (!didInit)
 				Init();
+
 			global_userDatas[id].PosVertical = num;
         }
+
+//MANA CARD COUNTER NOW
+		public int GetManaCardCounterNow(int id)
+        {
+			if (!didInit)
+				Init();
+
+			return global_userDatas[id].ManaCardCounterNow;
+		}
+
+		public void AddManaCardCounterNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterNow += num;
+		}
+
+		public void ReduceManaCardCounterNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterNow -= num;
+		}
+
+		public void SetManaCardCounterNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterNow = num;
+		}
+
+//MANA CARD COUNTER FULL
+		public int GetManaCardCounterFull(int id)
+        {
+			if (!didInit)
+				Init();
+
+			return global_userDatas[id].ManaCardCounterFull;
+		}
+
+		public void AddManaCardCounterFull(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterFull += num;
+		}
+
+		public void ReduceManaCardCounterFull(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterFull -= num;
+		}
 		
+		public void SetManaCardCounterFull(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].ManaCardCounterFull = num;
+		}
 //ITS FINISHED
 		public bool GetIsFinished(int id)
 		{

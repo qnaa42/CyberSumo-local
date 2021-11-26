@@ -103,6 +103,7 @@ namespace CodeMonkey.Utils {
             tile.isPopulatedByPlayer = IsPopulatedByPlayer;
             tile.isPopulatedByAi = IsPopulatedByAi;
             tile.phasing = Phasing;
+            TileManager tileManager = gameObject.AddComponent<TileManager>();
             EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
             BoxCollider2D collider = gameObject.AddComponent<BoxCollider2D>();
             collider.size = colliderScale;

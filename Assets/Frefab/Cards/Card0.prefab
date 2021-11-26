@@ -487,6 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
   DropZone: {fileID: 0}
+  thisCard: {fileID: 0}
   isDragging: 0
   startParent: {fileID: 0}
   isOverdropZone: 0
@@ -1265,6 +1266,7 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 5448206504923658199}
   frame: {fileID: 5448206504114851402}
+  borderFrame: {fileID: 5448206505668921391}
   numberOfCardsInDeck: 0
 --- !u!50 &1263004263355483768
 Rigidbody2D:

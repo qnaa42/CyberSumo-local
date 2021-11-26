@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GPC;
 
 public class DragDrop : MonoBehaviour
 {
     public GameObject Canvas;
     public GameObject DropZone;
+    public GameObject thisCard;
+    private Card thisCardStats;
     
     
 
@@ -25,6 +28,9 @@ public class DragDrop : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        thisCard = this.gameObject.transform.GetChild(0).gameObject;
+        thisCardStats = thisCard.GetComponent<Card>();
+
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
         CardArea = GameObject.Find("CardZone");
@@ -65,7 +71,7 @@ public class DragDrop : MonoBehaviour
         if (Sumo_GameManager.instance.isPlayable == true)
         {
             isDragging = true;
-            startParent = PlayerArea.transform.parent.gameObject;
+            startParent = PlayerArea.transform.gameObject;
             startPosition = PlayerArea.transform.position;
         }
     }
@@ -76,13 +82,37 @@ public class DragDrop : MonoBehaviour
             isDragging = false;
             if (isOverdropZone)
             {
-                transform.SetParent(dropZone.transform, true);
+                if (thisCardStats.id >= 1 && thisCardStats.id <=4)
+                {
+                    if (Sumo_GameManager.instance._playerStats.GetManaCardCounterNow() > 0)
+                    { 
+                        transform.SetParent(dropZone.transform, true); 
+                    }
+                    else
+                    {
+                        transform.SetParent(startParent.transform, true);
+                    }
+                }
+                //!!!!! 5 for now, increase when more card with cast emmerges !!!!!!!
+                else if (thisCardStats.id == 5)
+                {
+                    if (Sumo_GameManager.instance._playerStats.GetManaNow() >= thisCardStats.cost)
+                    {
+                        transform.SetParent(dropZone.transform, true);
+                    }
+                    else
+                    {
+                        transform.SetParent(startParent.transform, true);
+                    }
+                }
+                else
+                {
+                    transform.SetParent(dropZone.transform, true);
+                }
             }
             else
             {
-                transform.position = startPosition;
                 transform.SetParent(startParent.transform, true);
-                transform.parent = startParent.transform;
             }
         }
     }   

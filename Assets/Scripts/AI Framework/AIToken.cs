@@ -22,16 +22,13 @@ public class AIToken : MonoBehaviour
 
     public GameObject myStats;
     private BaseAiStatsController _myStats;
-    // Start is called before the first frame update
+
     void Start()
     {
         myStats = GameObject.Find("AI Manager");
-        _myStats = myStats.GetComponent<BaseAiStatsController>();
-
-        
+        _myStats = myStats.GetComponent<BaseAiStatsController>();       
     }
 
-    // Update is called once per frame
     void Update()
     {
         _myStats.SetAiDetails(id);
@@ -45,6 +42,5 @@ public class AIToken : MonoBehaviour
         moveCounterNow = _myStats.GetAiMoveCounterNow();
         posHorizontal = _myStats.GetAiPosHorizontal();
         posVertical = _myStats.GetAiPosVertical();
-
     }
 }

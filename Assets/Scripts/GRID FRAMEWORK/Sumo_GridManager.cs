@@ -24,6 +24,7 @@ public class Sumo_GridManager : MonoBehaviour
     public BasePlayerStatsController _playerStats;
 
     public int x;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,7 @@ public class Sumo_GridManager : MonoBehaviour
     {
         
     }
+
 
     public void MoveOneTile(string direction, int anAmount, GameObject controller)
     {

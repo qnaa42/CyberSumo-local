@@ -17,6 +17,8 @@
 		public int HandNow;
 		public int PosHorizontal;
 		public int PosVertical;
+		public int ManaCardCounterNow;
+		public int ManaCardCounterFull;
 		public bool isFinished;
 	}
 }

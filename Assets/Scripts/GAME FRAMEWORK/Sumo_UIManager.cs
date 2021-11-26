@@ -98,7 +98,6 @@ public class Sumo_UIManager : MonoBehaviour
 
         currentStateText.text = Sumo_GameManager.instance.currentGameState.ToString();
         numbersOfCards.text = Sumo_CardManager.deckSize.ToString();
-        //        hpText.text = "" + HP;
         if (CardZone.GetComponent<Populated>().isNotPopulated == false)
         {
             ResolvingCard = CardZone.transform.GetChild(0).gameObject;
@@ -239,7 +238,6 @@ public class Sumo_UIManager : MonoBehaviour
                     plusTwoMoveFullLandCard.SetActive(false);
                     plusOneMoveNowLandCard.SetActive(false);
                     plusTwoMoveNowLandCard.SetActive(false);
-                    // Debug.Log("collisionin");
                     ResolveButton.SetActive(true);
                     CancelButton.SetActive(true);
                     PassButton.SetActive(false);
@@ -322,6 +320,7 @@ public class Sumo_UIManager : MonoBehaviour
         _userStatsManager.AddManaFull(value);
         Destroy(thisCard);
         _userStatsManager.ReduceHandNow(1);
+        _userStatsManager.ReduceManaCardCounterNow(1);
     }
     public void AddManaNowLandCard(int value)
     {
@@ -329,6 +328,7 @@ public class Sumo_UIManager : MonoBehaviour
         _userStatsManager.AddManaNow(value);
             Destroy(this);
         _userStatsManager.ReduceHandNow(1);
+        _userStatsManager.ReduceManaCardCounterNow(1);
     }
     public void AddMoveFullLandCard(int value)
     {
@@ -336,6 +336,7 @@ public class Sumo_UIManager : MonoBehaviour
         _userStatsManager.AddMoveFull(value);
         Destroy(thisCard);
         _userStatsManager.ReduceHandNow(1);
+        _userStatsManager.ReduceManaCardCounterNow(1);
     }
     public void AddMoveNowLandCard(int value)
     {
@@ -343,6 +344,7 @@ public class Sumo_UIManager : MonoBehaviour
         _userStatsManager.AddMoveNow(value);
         Destroy(thisCard);
         _userStatsManager.ReduceHandNow(1);
+        _userStatsManager.ReduceManaCardCounterNow(1);
     }
     public void c05Cast(string direction)
     {

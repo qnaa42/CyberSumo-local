@@ -157,25 +157,7 @@ namespace GPC
             }
         }
 
-        //        void Update()
-        //        {
 
-        //            numberOfTilesInPlay = Sumo_GridManager.numberOfTiles;
-        //            horizontal = thisTile[0].horizontal;
-        //            vertical = thisTile[0].vertical;
-        //            isPopulatedByPlayer = thisTile[0].isPopulatedByPlayer;
-        //            isPopulatedByAi = thisTile[0].isPopulatedByAi;
-        //            phasing = thisTile[0].phasing;
-
-
-        //           if (this.tag == "Clone")
-        //           {
-        //               thisTile[0] = Sumo_GridManager.staticTileDeck[numberOfTilesInPlay - 1];
-        //               numberOfTilesInPlay -= 1;
-        //               Sumo_GridManager.numberOfTiles -= 1;
-        //               this.tag = "Untagged";
-        //           }
-        //       }
         public void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision == true && collision.gameObject.tag == "Player")

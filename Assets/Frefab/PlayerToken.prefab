@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8440113180646905069}
   - component: {fileID: -8252379590115170209}
   - component: {fileID: -2394151634278190619}
+  - component: {fileID: 2669937177240801841}
   m_Layer: 10
   m_Name: PlayerToken
   m_TagString: Player
@@ -224,3 +225,30 @@ MonoBehaviour:
   _myDataManager: {fileID: 0}
   myID: 0
   disableAutoPlayerListAdd: 0
+--- !u!114 &2669937177240801841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383720555858137531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a95bb862b0d8ea4eb748c4253a6fc50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  playerName: 
+  level: 0
+  health: 0
+  manaNow: 0
+  manaFull: 0
+  moveNow: 0
+  moveFull: 0
+  handNow: 0
+  handSize: 0
+  posHorizontal: 0
+  posVertical: 0
+  manaCardCounterNow: 0
+  manaCardCounterFull: 0
+  myStats: {fileID: 0}
