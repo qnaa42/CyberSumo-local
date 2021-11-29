@@ -68,7 +68,16 @@ public class Sumo_UIManager : MonoBehaviour
     public Text PosHorizontalText;
     public Text PosVerticalText;
 
-
+    [Header("Player Stats Bar")]
+    public List<GameObject> HealthFull = new List<GameObject>();
+    public List<GameObject> HealthPossible = new List<GameObject>();
+    public List<GameObject> HealthEmpty = new List<GameObject>();
+    public List<GameObject> ManaFull = new List<GameObject>();
+    public List<GameObject> ManaPossible = new List<GameObject>();
+    public List<GameObject> ManaEmpty = new List<GameObject>();
+    public List<GameObject> MoveFull = new List<GameObject>();
+    public List<GameObject> MovePossible = new List<GameObject>();
+    public List<GameObject> MoveEmpty = new List<GameObject>();
 
 
 
