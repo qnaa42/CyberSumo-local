@@ -83,38 +83,70 @@ namespace GPC
         }
 
 //HEALTH
-		public int GetHealth()
+		public int GetHealthFull()
 		{
 			if (!didInit)
 				Init();
 
-			return _myDataManager.GetHealth(myID);
+			return _myDataManager.GetHealthFull(myID);
 		}
 
-		public virtual void AddHealth(int anAmount)
+		public virtual void AddHealthFull(int anAmount)
 		{
 			if (!didInit)
 				Init();
 
-			_myDataManager.AddHealth(myID, anAmount);
+			_myDataManager.AddHealthFull(myID, anAmount);
 		}
 
-		public virtual void ReduceHealth(int anAmount)
+		public virtual void ReduceHealthFull(int anAmount)
 		{
 			if (!didInit)
 				Init();
 
-			_myDataManager.ReduceHealth(myID, anAmount);
+			_myDataManager.ReduceHealthFull(myID, anAmount);
 		}
 
-		public virtual void SetHealth(int anAmount)
+		public virtual void SetHealthFull(int anAmount)
 		{
 			if (!didInit)
 				Init();
 
-			_myDataManager.SetHealth(myID, anAmount);
+			_myDataManager.SetHealthFull(myID, anAmount);
 		}
 
+//HEALTH NOW
+		public int GetHealthNow()
+        {
+			if (!didInit)
+				Init();
+
+			return _myDataManager.GetHealthNow(myID);
+		}
+
+		public virtual void AddHealthNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.AddHealthNow(myID, anAmount);
+		}
+
+		public virtual void ReduceHealthNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.ReduceHealthNow(myID, anAmount);
+		}
+
+		public virtual void SetHealthNow(int anAmount)
+        {
+			if (!didInit)
+				Init();
+
+			_myDataManager.SetHealthNow(myID, anAmount);
+		}
 //TYPE
 		public int GetTypee()
         {

@@ -88,17 +88,21 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.playerUntap:
 				isPlayable = false;
+
 				_playerStats.SetManaNow(_playerStats.GetManaFull());
 				_playerStats.SetMoveNow(_playerStats.GetMoveFull());
 				_playerStats.SetManaCardCounterNow(_playerStats.GeteManaCardCounterFull());
 				break;
 
 			case Game.State.playerUpkeep:
+
 				isPlayable = false;
+
 				break;
 
 			case Game.State.playerDraw:
 				isPlayable = false;
+
 				if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
 				{
 					Draw1Card();
@@ -107,31 +111,38 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.playerPlay1:
 				isPlayable = true;
+
 				break;
 
 			case Game.State.playerMove:
 				isPlayable = false;
+
 				break;
 
 			case Game.State.playerResolveDMG:
 				isPlayable = false;
+
 				break;
 
 			case Game.State.playerPlay2:
 				isPlayable = true;
+
 				break;
 
 			case Game.State.playerCleanUp:
 				isPlayable = false;
+
 				break;
 
 			case Game.State.gameTurnPassPlayer:
 				SetTargetState(Game.State.aiUntap);
+
 				break;
 
 //AI Turn
 
 			case Game.State.aiUntap:
+
 				for (int i = 0; i <= NumberOfAi; i++)
 				{
 					_aiStats.SetAiDetails(i);
@@ -141,10 +152,12 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.aiUpkeep:
+
 				break;
 
 			case Game.State.aiMove:
-                for (int i = 0; i <= NumberOfAi; i++)
+
+				for (int i = 0; i <= NumberOfAi; i++)
                 {
 					_aiController.MoveTowardsPlayer(i);
 				}
@@ -152,7 +165,8 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.aiPlay:
-                for (int i = 0; i <= NumberOfAi; i++)
+
+				for (int i = 0; i <= NumberOfAi; i++)
                 {
 					_aiController.AttackPlayer(i);
 				}
@@ -160,19 +174,23 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.playerTrigger1:
+
 				break;
 
 			case Game.State.aiResolveDMG:
+
 				break;
 
 			case Game.State.playerTrigger2:
+
 				break;
 
 			case Game.State.aiCleanUp:
+
 				break;
 
 			case Game.State.gameTurnPassAI:
-				SetTargetState(Game.State.playerUntap);
+
 				break;
 
 //End Game Events
@@ -224,7 +242,7 @@ public class Sumo_GameManager : BaseGameManager
 		// Update is called once per frame
 		void Update()
 		{
-			if (_playerStats.GetHealth() <= 0)
+			if (_playerStats.GetHealthNow() <= 0)
 			{
 				SetTargetState(Game.State.gameEnding);
 			}

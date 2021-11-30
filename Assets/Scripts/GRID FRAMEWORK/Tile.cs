@@ -93,7 +93,7 @@ namespace GPC
                         {
                             GameObject playerToken = thisTile.gameObject.transform.GetChild(0).gameObject;
                             BasePlayerStatsController _playerStats = PlayerManager.GetComponent<BasePlayerStatsController>();
-                            _playerStats.ReduceHealth(phasingPower);
+                            _playerStats.ReduceHealthNow(phasingPower);
                             phasing--;
                             if (phasing == 0)
                             {

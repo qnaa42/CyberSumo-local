@@ -45,7 +45,8 @@ namespace GPC
 			newUser.id = global_userDatas.Count;
 			newUser.playerName = "Anonymous";
 			newUser.level = 1;
-			newUser.health = 100;
+			newUser.healthFull = 100;
+			newUser.healthNow = 100;
 			newUser.ManaFull = 1;
 			newUser.ManaNow = 1;
 			newUser.MoveFull = 1;
@@ -97,36 +98,69 @@ namespace GPC
 			global_userDatas[id].level = num;
 		}
 
-//HEALTH
-		public int GetHealth(int id)
+//HEALTH FULL
+		public int GetHealthFull(int id)
 		{
 			if (!didInit)
 				Init();
 
-			return global_userDatas[id].health;
+			return global_userDatas[id].healthFull;
 		}
-		public void AddHealth(int id, int num)
+		public void AddHealthFull(int id, int num)
 		{
 			if (!didInit)
 				Init();
 
-			global_userDatas[id].health += num;
-		}
-
-		public void ReduceHealth(int id, int num)
-		{
-			if (!didInit)
-				Init();
-
-			global_userDatas[id].health -= num;
+			global_userDatas[id].healthFull += num;
 		}
 
-		public void SetHealth(int id, int num)
+		public void ReduceHealthFull(int id, int num)
 		{
 			if (!didInit)
 				Init();
 
-			global_userDatas[id].health = num;
+			global_userDatas[id].healthFull -= num;
+		}
+
+		public void SetHealthFull(int id, int num)
+		{
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].healthFull = num;
+		}
+
+//HEALTH NOW
+		public int GetHealthNow(int id)
+        {
+			if (!didInit)
+				Init();
+
+			return global_userDatas[id].healthNow;
+		}
+		
+		public void AddHealthNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].healthNow += num;
+		}
+		
+		public void ReduceHealthNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].healthNow -= num;
+		}
+
+		public void SetHealthNow(int id, int num)
+        {
+			if (!didInit)
+				Init();
+
+			global_userDatas[id].healthNow = num;
 		}
 
 //TYPE		

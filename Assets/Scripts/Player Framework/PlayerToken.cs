@@ -46,7 +46,7 @@ public class PlayerToken : MonoBehaviour
 playerName = _myStats.GetName();
 
         level = _myStats.GetLevel();
-        health = _myStats.GetHealth();
+        health = _myStats.GetHealthNow();
 
         manaNow = _myStats.GetManaNow();
         manaFull = _myStats.GetManaFull();

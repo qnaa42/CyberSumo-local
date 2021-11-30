@@ -24,6 +24,7 @@ public class Sumo_UIManager : MonoBehaviour
     public GameObject CardZone;
 
     [Header("MoveButtons")]
+    public GameObject MoveButtonsBox;
     public GameObject UpButton;
     public GameObject minusUpButton;
     public GameObject RightButton;
@@ -33,6 +34,7 @@ public class Sumo_UIManager : MonoBehaviour
     public Text numbersOfCards;
 
     [Header("Land Cards Buttons")]
+    public GameObject LandCardsDropBox;
     public GameObject JustOneOptionManaLandCard;
     public GameObject plusOneManaFullLandCard;
     public GameObject plusTwoManaFullLandCard;
@@ -44,6 +46,7 @@ public class Sumo_UIManager : MonoBehaviour
     public GameObject plusTwoMoveNowLandCard;
 
     [Header("Card 05 Direction Buttons")]
+    public GameObject cs05DropBox;
     public GameObject c05UpButton;
     public GameObject c05minusUpButton;
     public GameObject c05RightButton;
@@ -79,6 +82,12 @@ public class Sumo_UIManager : MonoBehaviour
     public List<GameObject> MovePossible = new List<GameObject>();
     public List<GameObject> MoveEmpty = new List<GameObject>();
 
+    [Header("Turn Bar")]
+    public List<GameObject> TurnActive = new List<GameObject>();
+    public List<GameObject> TurnInActive = new List<GameObject>();
+
+
+
 
 
     public GameObject ResolvingCard;
@@ -93,7 +102,7 @@ public class Sumo_UIManager : MonoBehaviour
         playerToken = GameObject.Find("PlayerToken(Clone)");
         //PLAYER STATS BOX
 
-        hpText.text = "" + _userStatsManager.GetHealth().ToString();
+        hpText.text = "" + _userStatsManager.GetHealthNow().ToString();
         TypeText.text = "" + _userStatsManager.GetType().ToString();
         ManaNowText.text = "" + _userStatsManager.GetManaNow().ToString();
         ManaMaxText.text = "" + _userStatsManager.GetManaFull().ToString();
@@ -116,6 +125,7 @@ public class Sumo_UIManager : MonoBehaviour
                 Card thisCardStats = thisCard.GetComponent<Card>();
                 if (thisCardStats.id == 1)
                 {
+                    LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(false);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -128,10 +138,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(false);
                     CancelButton.SetActive(false);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(false);
                     c05UpButton.SetActive(false);
                     c05minusUpButton.SetActive(false);
                     c05RightButton.SetActive(false);
@@ -141,6 +153,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 2)
                 {
+                    LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(true);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -153,10 +166,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(false);
                     CancelButton.SetActive(false);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(false);
                     c05UpButton.SetActive(false);
                     c05minusUpButton.SetActive(false);
                     c05RightButton.SetActive(false);
@@ -166,6 +181,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 3)
                 {
+                    LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(true);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -178,10 +194,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(false);
                     CancelButton.SetActive(false);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(false);
                     c05UpButton.SetActive(false);
                     c05minusUpButton.SetActive(false);
                     c05RightButton.SetActive(false);
@@ -190,6 +208,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 4)
                 {
+                    LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(false);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -202,10 +221,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(false);
                     CancelButton.SetActive(false);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(false);
                     c05UpButton.SetActive(false);
                     c05minusUpButton.SetActive(false);
                     c05RightButton.SetActive(false);
@@ -214,6 +235,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 5)
                 {
+                    LandCardsDropBox.SetActive(false);
                     JustOneOptionManaLandCard.SetActive(false);
                     plusOneManaFullLandCard.SetActive(false);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -226,10 +248,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(false);
                     CancelButton.SetActive(false);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(true);
                     c05UpButton.SetActive(true);
                     c05minusUpButton.SetActive(true);
                     c05RightButton.SetActive(true);
@@ -238,6 +262,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id >5)
                 {
+                    LandCardsDropBox.SetActive(false);
                     JustOneOptionManaLandCard.SetActive(false);
                     plusOneManaFullLandCard.SetActive(false);
                     plusTwoManaFullLandCard.SetActive(false);
@@ -250,10 +275,12 @@ public class Sumo_UIManager : MonoBehaviour
                     ResolveButton.SetActive(true);
                     CancelButton.SetActive(true);
                     PassButton.SetActive(false);
+                    MoveButtonsBox.SetActive(false);
                     UpButton.SetActive(false);
                     minusUpButton.SetActive(false);
                     RightButton.SetActive(false);
                     minusRightButton.SetActive(false);
+                    cs05DropBox.SetActive(false);
                     c05UpButton.SetActive(false);
                     c05minusUpButton.SetActive(false);
                     c05RightButton.SetActive(false);
@@ -268,10 +295,12 @@ public class Sumo_UIManager : MonoBehaviour
             ResolveButton.SetActive(false);
             CancelButton.SetActive(false);
             PassButton.SetActive(true);
+            MoveButtonsBox.SetActive(true);
             UpButton.SetActive(true);
             minusUpButton.SetActive(true);
             RightButton.SetActive(true);
             minusRightButton.SetActive(true);
+            LandCardsDropBox.SetActive(false);
             JustOneOptionManaLandCard.SetActive(false);
             plusOneManaFullLandCard.SetActive(false);
             plusTwoManaFullLandCard.SetActive(false);
@@ -281,6 +310,7 @@ public class Sumo_UIManager : MonoBehaviour
             plusTwoMoveFullLandCard.SetActive(false);
             plusOneMoveNowLandCard.SetActive(false);
             plusTwoMoveNowLandCard.SetActive(false);
+            cs05DropBox.SetActive(false);
             c05UpButton.SetActive(false);
             c05minusUpButton.SetActive(false);
             c05RightButton.SetActive(false);
@@ -293,6 +323,7 @@ public class Sumo_UIManager : MonoBehaviour
         }
         if (gameManager.currentGameState == Game.State.playerMove)
         {
+            MoveButtonsBox.SetActive(true);
             UpButton.SetActive(true);
             minusUpButton.SetActive(true);
             RightButton.SetActive(true);
@@ -300,10 +331,83 @@ public class Sumo_UIManager : MonoBehaviour
         }
         else if (gameManager.currentGameState != Game.State.playerMove)
         {
+            MoveButtonsBox.SetActive(false);
             UpButton.SetActive(false);
             minusUpButton.SetActive(false);
             RightButton.SetActive(false);
             minusRightButton.SetActive(false);
+        }
+
+//HEALTH BAR
+        if (Sumo_GameManager.instance._playerStats.GetHealthFull() >= 0)
+        {
+
+            for (int i = 0; i < (Sumo_GameManager.instance._playerStats.GetHealthNow() / 10); i++)
+            {
+                HealthFull[i].SetActive(true);
+            }
+            for (int i = 9; i >= (Sumo_GameManager.instance._playerStats.GetHealthNow() / 10); i--)
+            {
+                HealthFull[i].SetActive(false);
+            }
+            for (int i = 0; i < (Sumo_GameManager.instance._playerStats.GetHealthFull() / 10); i++)
+            {
+                HealthPossible[i].SetActive(true);
+            }
+            for (int i = 9; i >= (Sumo_GameManager.instance._playerStats.GetHealthFull() / 10); i--)
+            {
+                HealthPossible[i].SetActive(false);
+            }
+        }
+        //MANA BAR
+        if (Sumo_GameManager.instance._playerStats.GetManaFull() >= 0)
+        {
+
+            for (int i = 0; i < Sumo_GameManager.instance._playerStats.GetManaNow(); i++)
+            {
+                ManaFull[i].SetActive(true);
+            }
+            for (int i = 9; i >= Sumo_GameManager.instance._playerStats.GetManaNow(); i--)
+            {
+                ManaFull[i].SetActive(false);
+            }
+            for (int i = 0; i < Sumo_GameManager.instance._playerStats.GetManaFull(); i++)
+            {
+                ManaPossible[i].SetActive(true);
+            }
+            for (int i = 9; i >= Sumo_GameManager.instance._playerStats.GetManaFull(); i--)
+            {
+                ManaPossible[i].SetActive(false);
+            }
+        }
+//MOVE BAR
+
+
+        if (Sumo_GameManager.instance._playerStats.GetMoveFull() >= 0)
+        {
+
+                for (int i = 0; i < Sumo_GameManager.instance._playerStats.GetMoveNow(); i++)
+                {
+                    MoveFull[i].SetActive(true);
+                }
+                for (int i = 9; i >= Sumo_GameManager.instance._playerStats.GetMoveNow(); i--)
+                {
+                    MoveFull[i].SetActive(false);
+                }
+                for (int i = 0; i < Sumo_GameManager.instance._playerStats.GetMoveFull(); i++)
+                {
+                    MovePossible[i].SetActive(true);
+                }
+                for (int i = 9; i >= Sumo_GameManager.instance._playerStats.GetMoveFull(); i--)
+                {
+                    MovePossible[i].SetActive(false);
+                }
+        }
+
+
+        if (Sumo_GameManager.instance._playerStats.GetHealthNow() == 100)
+        {
+
         }
 
     }
@@ -420,5 +524,160 @@ public class Sumo_UIManager : MonoBehaviour
         spellDeck.PushAndDiamonAttackPattern(playerToken, direction, thisCardStats.power, "Yes");
         Sumo_GameManager.instance.CancelClick();
     }
+
+    public void RefreshTurnBar()
+    {
+//PLAYER TURN
+        if (Sumo_GameManager.instance.currentGameState == Game.State.playerUntap)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 0)
+                { 
+                    TurnActive[i].SetActive(true); 
+                }
+                else 
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerUpkeep)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 1)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerDraw)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 2)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerPlay1)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 3)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerMove)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 4)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerResolveDMG)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 5)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerPlay2)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 6)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerCleanUp)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 7)
+                {
+                    TurnActive[i].SetActive(true);
+                }
+                else
+                {
+                    TurnActive[i].SetActive(false);
+                }
+
+            }
+
+        }
+
+//AI TURN
+        if (Sumo_GameManager.instance.currentGameState == Game.State.aiUntap)
+        {
+
+        }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.aiUpkeep)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.aiMove)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.aiPlay)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerTrigger1)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.aiResolveDMG)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.playerTrigger2)
+        { }
+        else if (Sumo_GameManager.instance.currentGameState == Game.State.aiCleanUp)
+        { }
+
+    }
+
+
     
 }

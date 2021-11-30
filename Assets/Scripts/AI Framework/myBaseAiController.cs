@@ -638,7 +638,7 @@ namespace GPC
                         }
                         else if (_aiStats.GetAiActionCounterNow() < 2)
                         {
-                            _playerStats.ReduceHealth(5);
+                            _playerStats.ReduceHealthNow(5);
                             _aiStats.ReduceAiActionCounterNow(1);
                             Debug.Log("Player Get Hit - 5 hp!");
 
@@ -659,7 +659,7 @@ namespace GPC
                         }
                         else if (_aiStats.GetAiActionCounterNow() < 2)
                         {
-                            _playerStats.ReduceHealth(5);
+                            _playerStats.ReduceHealthNow(5);
                             _aiStats.ReduceAiActionCounterNow(1);
                             Debug.Log("Player Get Hit - 5 hp!");
                         }
@@ -679,7 +679,7 @@ namespace GPC
                         }
                         else if (_aiStats.GetAiActionCounterNow() < 2)
                         {
-                            _playerStats.ReduceHealth(5);
+                            _playerStats.ReduceHealthNow(5);
                             _aiStats.ReduceAiActionCounterNow(1);
                             Debug.Log("Player Get Hit - 5 hp!");
                         }
@@ -699,7 +699,7 @@ namespace GPC
                         }
                         else if (_aiStats.GetAiActionCounterNow() < 2)
                         {
-                            _playerStats.ReduceHealth(5);
+                            _playerStats.ReduceHealthNow(5);
                             _aiStats.ReduceAiActionCounterNow(1);
                             Debug.Log("Player Get Hit - 5 hp!");
                         }

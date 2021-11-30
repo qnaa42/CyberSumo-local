@@ -7,7 +7,8 @@
 		public string playerName = "Anonymous"; 
 		
 		public int level;
-		public int health;
+		public int healthFull;
+		public int healthNow;
 		public int type;
 		public int ManaFull;
 		public int ManaNow;
