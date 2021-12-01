@@ -647,12 +647,12 @@ namespace GPC
                     if (isPresentMinusUpTile && NumberOfTilesInBetweenHorizontal == 0 && NumberOfTilesInBetweenVertical != 0)
                     {
                         int x = Random.Range(0, 100 );
-                        if (x >= 0 && x <= 50 && _aiStats.GetAiActionCounterNow() >= 2)
+                        if (x >= 0 && x <= 10 && _aiStats.GetAiActionCounterNow() >= 2)
                         {
                             spellDeck.SimpleAttack(aiToken, "minusUp");
                             _aiStats.ReduceAiActionCounterNow(2);
                         }
-                        else if (x > 50 && x <= 100 && _aiStats.GetAiActionCounterNow() >= 2)
+                        else if (x > 10 && x <= 100 && _aiStats.GetAiActionCounterNow() >= 2)
                         {
                             spellDeck.PushAndDiamonAttackPattern(aiToken, "minusUp", 10, "No");
                             _aiStats.ReduceAiActionCounterNow(2);

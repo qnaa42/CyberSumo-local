@@ -423,7 +423,7 @@ namespace GPC
                     {
 
                         spellDeck.PhaseTile(1, 5, 0, 2, null);
-                        spellDeck.PullBack(0, 2, 0, 1, "Player");
+                        spellDeck.PushBack(0, 1, 0, 2, null);
                     }
                     if ((playerStats.GetPosHorizontal() - 1) >= 0 && (playerStats.GetPosHorizontal() - 1) <= 6 && (playerStats.GetPosVertical() + 2) >= 0 && (playerStats.GetPosVertical() + 2) <= 4)
                     {
@@ -447,7 +447,7 @@ namespace GPC
                     if (playerStats.GetPosHorizontal() >= 0 && playerStats.GetPosHorizontal() <= 6 && (playerStats.GetPosVertical() - 2) >= 0 && (playerStats.GetPosVertical() - 2) <= 4)
                     {
                         spellDeck.PhaseTile(1, 5, 0, -2, null);
-                        spellDeck.PullBack(0, -2, 0, -1, "Player");
+                        spellDeck.PushBack(0, -1, 0, -2, null);
                     }
                     if ((playerStats.GetPosHorizontal() - 1) >= 0 && (playerStats.GetPosHorizontal() - 1) <= 6 && (playerStats.GetPosVertical() - 2) >= 0 && (playerStats.GetPosVertical() - 2) <= 4)
                     {
@@ -471,7 +471,7 @@ namespace GPC
                     if ((playerStats.GetPosHorizontal() + 2) >= 0 && (playerStats.GetPosHorizontal() + 2) <= 6 && playerStats.GetPosVertical() >= 0 && playerStats.GetPosVertical() <= 4)
                     {
                         spellDeck.PhaseTile(1, 5, 2, 0, null);
-                        spellDeck.PullBack(2, 0, 1, 0, "Player");
+                        spellDeck.PushBack(1, 0, 2, 0, null) ;
                     }
                     if ((playerStats.GetPosHorizontal() + 2) >= 0 && (playerStats.GetPosHorizontal() + 2) <= 6 && (playerStats.GetPosVertical() + 1) >= 0 && (playerStats.GetPosVertical() + 1) <= 4)
                     {
@@ -495,7 +495,7 @@ namespace GPC
                     if ((playerStats.GetPosHorizontal() - 2) >= 0 && (playerStats.GetPosHorizontal() - 2) <= 6 && playerStats.GetPosVertical() >= 0 && playerStats.GetPosVertical() <= 4)
                     {
                         spellDeck.PhaseTile(1, 5, -2, 0, null);
-                        spellDeck.PullBack(-2, 0, -1, 0, "Player");
+                        spellDeck.PullBack(-1, 0, -2, 0, null);
                     }
                     if ((playerStats.GetPosHorizontal() - 2) >= 0 && (playerStats.GetPosHorizontal() - 2) <= 6 && (playerStats.GetPosVertical() + 1) >= 0 && (playerStats.GetPosVertical() + 1) <= 4)
                     {

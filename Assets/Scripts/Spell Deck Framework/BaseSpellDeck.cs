@@ -27,6 +27,8 @@ namespace GPC
 
                     GameObject targetTile = GameObject.Find("Tile" + (PlayerStats.GetPosHorizontal() + howManyTilesHorizontal) + "/" + (PlayerStats.GetPosVertical() + howManyTilesVertical));
                     Tile _targetTile = targetTile.GetComponent<Tile>();
+                _targetTile.tileStateMachine.targetTileState = TileState.State.casting;
+                _targetTile.tileStateMachine.UpdateCurrentState();
                     _targetTile.phasing = phasing;
                     _targetTile.phasingPower = phasingPower;
                     _targetTile.phasingPlacedByPlayer = true;                                                
@@ -36,7 +38,9 @@ namespace GPC
 
                     GameObject targetTile = GameObject.Find("Tile" + (AiStats.GetAiPosHorizontal() + howManyTilesHorizontal) + "/" + (AiStats.GetAiPosVertical() + howManyTilesVertical));
                     Tile _targetTile = targetTile.GetComponent<Tile>();
-                    _targetTile.phasing = phasing;
+                _targetTile.tileStateMachine.targetTileState = TileState.State.casting;
+                _targetTile.tileStateMachine.UpdateCurrentState();
+                _targetTile.phasing = phasing;
                     _targetTile.phasingPower = phasingPower;
                     _targetTile.phasingPlacedByAi = true;
             }
@@ -44,9 +48,12 @@ namespace GPC
             {
                 GameObject targetTile = GameObject.Find("Tile" + (PlayerStats.GetPosHorizontal() + howManyTilesHorizontal) + "/" + (PlayerStats.GetPosVertical() + howManyTilesVertical));
                 Tile _targetTile = targetTile.GetComponent<Tile>();
-                _targetTile.phasing = 0;
-                _targetTile.phasingPower = 0;
-                _targetTile.phasingPlacedByAi = false;
+                _targetTile.tileStateMachine.targetTileState = TileState.State.active;
+                _targetTile.tileStateMachine.UpdateCurrentState();
+                _targetTile.phasing = _targetTile.phasingResolveState;
+                _targetTile.phasingPower = _targetTile.phasingPowerResolveState;
+                _targetTile.phasingPlacedByAi = _targetTile.phasingPlacedByAiResolveState;
+                _targetTile.phasingPlacedByPlayer = _targetTile.phasingPlacedByPlayerResolveState;
                
 
             }
@@ -65,6 +72,7 @@ namespace GPC
                     Transform targetTileTransform = targetTile.transform;
                     Tile targetTileClass = targetTile.GetComponent<Tile>();
                     AiStats.SetAiPosVertical(targetTileClass.vertical);
+                    AiStats.SetAiPosHorizontal(targetTileClass.horizontal);
                     target.transform.position = targetTileTransform.transform.position;
                     target.transform.SetParent(targetTileTransform, true);
                 }
@@ -77,15 +85,36 @@ namespace GPC
                 if (tileOccupiedByTargetTileClass.isPopulatedByPlayer)
                 {
                     GameObject target = tileOccupiedByTargetTransform.GetChild(0).gameObject;
-                    GameObject targetTile = GameObject.Find("Tile" + (AiStats.GetAiPosHorizontal() + howManyTilesPushFromCasterHorizontal) + "/" + (PlayerStats.GetPosVertical() + howManyTilesPushFromCasterVertical));
+                    GameObject targetTile = GameObject.Find("Tile" + (AiStats.GetAiPosHorizontal() + howManyTilesPushFromCasterHorizontal) + "/" + (AiStats.GetAiPosVertical() + howManyTilesPushFromCasterVertical));
                     Transform targetTileTransform = targetTile.transform;
                     Tile targetTileClass = targetTile.GetComponent<Tile>();
                     PlayerStats.SetPosVertical(targetTileClass.vertical);
+                    PlayerStats.SetPosHorizontal(targetTileClass.horizontal);
                     target.transform.position = targetTileTransform.transform.position;
                     target.transform.SetParent(targetTileTransform, true);
                 }
 
-            }                    
+            }
+            else if (who == null)
+            {
+                GameObject tileOccupiedByTarget = GameObject.Find("Tile" + (PlayerStats.GetPosHorizontal() + targetTileHowManyTileAwayHorizontal) + "/" + (PlayerStats.GetPosVertical() + targetTileHowManyTileAwayVertical));
+                Tile tileOccupiedByTargetTileClass = tileOccupiedByTarget.GetComponent<Tile>();
+                Transform tileOccupiedByTargetTransform = tileOccupiedByTarget.transform;
+                if (tileOccupiedByTargetTileClass.isPopulatedByAiResolveState)
+                {
+
+                    GameObject targetTile = GameObject.Find("Tile" + (PlayerStats.GetPosHorizontal() + howManyTilesPushFromCasterHorizontal) + "/" + (PlayerStats.GetPosVertical() + howManyTilesPushFromCasterVertical));
+                    Transform targetTileTransform = targetTile.transform;
+                    GameObject target = targetTileTransform.GetChild(0).gameObject;
+
+                    Tile targetTileClass = targetTile.GetComponent<Tile>();
+                    AiStats.SetAiPosVertical(tileOccupiedByTargetTileClass.vertical);
+                    AiStats.SetAiPosHorizontal(tileOccupiedByTargetTileClass.horizontal);
+                    target.transform.position = targetTileTransform.transform.position;
+                    target.transform.SetParent(targetTileTransform, true);
+                }
+
+            }
         }
         public virtual void PullBack(int targetTileHowManyTileAwayHorizontal, int targetTileHowManyTileAwayVertical, int howManyTilesPushFromCasterHorizontal, int howManyTilesPushFromCasterVertical, string who)
         {
@@ -113,7 +142,7 @@ namespace GPC
                 if (tileOccupiedByTargetTileClass.isPopulatedByPlayer)
                 {
                     GameObject target = tileOccupiedByTargetTransform.GetChild(0).gameObject;
-                    GameObject targetTile = GameObject.Find("Tile" + (AiStats.GetAiPosHorizontal() + howManyTilesPushFromCasterHorizontal) + "/" + (PlayerStats.GetPosVertical() + howManyTilesPushFromCasterVertical));
+                    GameObject targetTile = GameObject.Find("Tile" + (AiStats.GetAiPosHorizontal() + howManyTilesPushFromCasterHorizontal) + "/" + (AiStats.GetAiPosVertical() + howManyTilesPushFromCasterVertical));
                     Transform targetTileTransform = targetTile.transform;
                     Tile targetTileClass = targetTile.GetComponent<Tile>();
                     PlayerStats.SetPosVertical(targetTileClass.vertical);

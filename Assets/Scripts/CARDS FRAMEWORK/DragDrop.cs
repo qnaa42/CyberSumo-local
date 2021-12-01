@@ -86,7 +86,8 @@ public class DragDrop : MonoBehaviour
                 {
                     if (Sumo_GameManager.instance._playerStats.GetManaCardCounterNow() > 0)
                     { 
-                        transform.SetParent(dropZone.transform, true); 
+                        transform.SetParent(dropZone.transform, true);
+                        Vector2 newScale = transform.transform.localScale;
                     }
                     else
                     {

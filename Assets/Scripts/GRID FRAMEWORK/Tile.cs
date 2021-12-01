@@ -14,6 +14,7 @@ namespace GPC
         private GameObject thisTile;
         private GameObject PlayerManager;
         private GameObject AiManager;
+        public TileManager tileStateMachine;
 
 
         private int resolveCounter;
@@ -33,9 +34,17 @@ namespace GPC
         public int phasingPower;
 
         public int numberOfTilesInPlay;
+
+        public bool isPopulatedByPlayerResolveState;
+        public bool isPopulatedByAiResolveState;
+        public bool phasingPlacedByAiResolveState;
+        public bool phasingPlacedByPlayerResolveState;
+        public int phasingResolveState;
+        public int phasingPowerResolveState;
         // Start is called before the first frame update
         void Start()
         {
+            tileStateMachine = this.GetComponent<TileManager>();
             phasingPower = 10;
             resolveCounter = 1;
             thisTile = GameObject.Find("Tile" + horizontal + "/" + vertical);
@@ -80,16 +89,28 @@ namespace GPC
                 Image thisImage = thisTile.GetComponent<Image>();
                 thisImage.color = new Color32(255, 255, 255, 255);
             }
-          
+
             if (Sumo_GameManager.instance.currentGameState == Game.State.playerUpkeep || Sumo_GameManager.instance.currentGameState == Game.State.aiUpkeep)
             {
                 resolveCounter = 1;
             }
             if (Sumo_GameManager.instance.currentGameState == Game.State.playerResolveDMG && resolveCounter > 0)
             {
-                    if (phasing == 1 && phasingPlacedByPlayer)
+                if (phasing == 1 && phasingPlacedByPlayer)
+                {
+                    if (isPopulatedByAi)
                     {
-                        if (isPopulatedByPlayer)
+                        GameObject aiToken = thisTile.gameObject.transform.GetChild(0).gameObject;
+                        AIToken _aiToken = aiToken.GetComponent<AIToken>();
+                        BaseAiStatsController _aiStats = AiManager.GetComponent<BaseAiStatsController>();
+                        _aiStats.SetAiDetails(_aiToken.id);
+                        _aiStats.ReduceAiHealth(phasingPower);
+                        phasing--;
+                        if (phasing == 0)
+                        {
+                            phasingPlacedByPlayer = false;
+                        }
+                        else if (isPopulatedByPlayer)
                         {
                             GameObject playerToken = thisTile.gameObject.transform.GetChild(0).gameObject;
                             BasePlayerStatsController _playerStats = PlayerManager.GetComponent<BasePlayerStatsController>();
@@ -97,15 +118,23 @@ namespace GPC
                             phasing--;
                             if (phasing == 0)
                             {
-                            phasingPlacedByPlayer = false;
+                                phasingPlacedByPlayer = false;
                             }
-                        
+
                         }
-                        else
-                        {
-                            phasing--;
-                        }                        
                     }
+                    else if (!isPopulatedByAi && !isPopulatedByPlayer)
+                    {
+                        phasing--;
+                        if (phasing == 0)
+                        {
+                            phasingPlacedByAi = false;
+                        }
+
+                    }
+                    
+                }
+
                 else if (phasing > 1 && phasingPlacedByPlayer)
                 {
                     phasing--;
@@ -123,7 +152,9 @@ namespace GPC
                     if (isPopulatedByAi)
                     {
                         GameObject aiToken = thisTile.gameObject.transform.GetChild(0).gameObject;
+                        AIToken _aiToken = aiToken.GetComponent<AIToken>();
                         BaseAiStatsController _aiStats = AiManager.GetComponent<BaseAiStatsController>();
+                        _aiStats.SetAiDetails(_aiToken.id);
                         _aiStats.ReduceAiHealth(phasingPower);
                         phasing--;
                         if (phasing == 0)
@@ -132,7 +163,17 @@ namespace GPC
                         }
 
                     }
-                    else
+                    else if (isPopulatedByPlayer)
+                    {
+                        GameObject playerToken = thisTile.gameObject.transform.GetChild(0).gameObject;
+                        Sumo_GameManager.instance._playerStats.ReduceHealthNow(phasingPower);
+                        phasing--;
+                        if (phasing == 0)
+                        {
+                            phasingPlacedByAi = false;
+                        }
+                    }
+                    else if (!isPopulatedByPlayer && !isPopulatedByAi)
                     {
                         phasing--;
                         if (phasing == 0)
@@ -141,6 +182,7 @@ namespace GPC
                         }
                     }
                 }
+
                 else if (phasing > 1 && phasingPlacedByAi)
                 {
                     phasing--;
@@ -150,10 +192,6 @@ namespace GPC
                     }
                 }
                 resolveCounter--;
-                if (phasing == 0)
-                {
-                    phasingPlacedByAi = false;
-                }
             }
         }
 
@@ -173,8 +211,12 @@ namespace GPC
         }
         public void OnTriggerExit2D(Collider2D collision)
         {
-                isPopulatedByPlayer = false;
-                isPopulatedByAi = false;
+            isPopulatedByPlayer = false;
+            isPopulatedByAi = false;
         }
     }
+
 }
+
+
+

@@ -65,14 +65,6 @@ public class Sumo_CardManager : MonoBehaviour
     void Update()
     {
         staticDeck = deck;
-        if(deckSize<30)
-        { cardInDeck1.SetActive(false); }
-        if(deckSize<20)
-        { cardInDeck2.SetActive(false); }
-        if(deckSize<10)
-        { cardInDeck3.SetActive(false); }
-        if(deckSize == 0)
-        { cardInDeck4.SetActive(false); }
 
         
 

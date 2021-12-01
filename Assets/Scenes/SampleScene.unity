@@ -3606,7 +3606,8 @@ MonoBehaviour:
   GridArea: {fileID: 0}
   PlayerPrefab: {fileID: 4383720555858137531, guid: dba19539fc26f09418a4c45afcca97eb, type: 3}
   AiPrefab: {fileID: 5505551188533860476, guid: 46b874adc3493dc44906b9b16be0d772, type: 3}
-  NumberOfAi: 2
+  NumberOfAi: 0
+  cardOriginalScale: {x: 0, y: 0, z: 0}
   _uiManager: {fileID: 375001464}
   _userManager: {fileID: 1246203075}
   _playerStats: {fileID: 1246203076}
@@ -9153,10 +9154,10 @@ GameObject:
   - component: {fileID: 886273224}
   - component: {fileID: 886273227}
   - component: {fileID: 886273226}
-  - component: {fileID: 886273225}
   - component: {fileID: 886273228}
   - component: {fileID: 886273230}
   - component: {fileID: 886273231}
+  - component: {fileID: 886273225}
   m_Layer: 8
   m_Name: CardZone
   m_TagString: Untagged
@@ -9180,7 +9181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1140, y: 0}
+  m_AnchoredPosition: {x: -1100, y: 3.8}
   m_SizeDelta: {x: 312, y: 462}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886273225
@@ -9192,7 +9193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 886273223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -9201,12 +9202,14 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_StartCorner: 2
-  m_StartAxis: 1
-  m_CellSize: {x: 300, y: 450}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &886273226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19367,6 +19370,14 @@ PrefabInstance:
     - target: {fileID: 3792897193756115145, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
       propertyPath: m_Padding.m_Bottom
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792897193756115145, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792897193756115145, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3792897193756115189, guid: 52d1af2a30497dc42bcd16cf57dd71af, type: 3}
       propertyPath: m_Name

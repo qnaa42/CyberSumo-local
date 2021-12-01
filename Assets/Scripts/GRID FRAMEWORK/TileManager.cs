@@ -5,10 +5,11 @@ using GPC;
 
 public class TileManager : BaseTileStateManager
 {
+    private Tile thisTile;
     // Start is called before the first frame update
     void Start()
     {
-        
+        thisTile = this.GetComponent<Tile>();
     }
 
     // Update is called once per frame
@@ -26,6 +27,10 @@ public class TileManager : BaseTileStateManager
                 break;
 
             case TileState.State.casting:
+                thisTile.phasingPlacedByAiResolveState = thisTile.phasingPlacedByAi;
+                thisTile.phasingPlacedByPlayerResolveState = thisTile.phasingPlacedByPlayer;
+                thisTile.phasingPowerResolveState = thisTile.phasingPower;
+                thisTile.phasingResolveState = thisTile.phasing;
                 break;
         }
     }

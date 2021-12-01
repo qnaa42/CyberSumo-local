@@ -26,6 +26,8 @@ public class Sumo_GameManager : BaseGameManager
 	public GameObject AiPrefab;
 	public int NumberOfAi;
 
+	public Vector3 cardOriginalScale;
+
 
 
 
