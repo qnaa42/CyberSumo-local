@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Sumo_GameManager : BaseGameManager
 {
 	public bool isPlayable;
+	public bool GameLoopEvents;
 	private GridClass grid;
 
 	public GameObject PlayerArea;
@@ -65,28 +66,33 @@ public class Sumo_GameManager : BaseGameManager
 
 			case Game.State.loaded:
 				isPlayable = false;
+				GameLoopEvents = false;
 
 				Loaded();
 				SetTargetState(Game.State.gameStarting);
 				break;
 
 			case Game.State.gameStarting:
+				GameLoopEvents = false;
 				StartGame();
 				SetTargetState(Game.State.gameStarted);
 				break;
 
 			case Game.State.gameStarted:
+				GameLoopEvents = false;
 				GameStarted();
 				DrawGrid();
 				break;
 
 			case Game.State.gamePlaying:
+				GameLoopEvents = false;
 				SetTargetState(Game.State.playerPlay1);
 				break;
 
 //Player Turn
 
 			case Game.State.playerUntap:
+				GameLoopEvents = true;
 				isPlayable = false;
 
 				_playerStats.SetManaNow(_playerStats.GetManaFull());
@@ -95,12 +101,14 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.playerUpkeep:
+				GameLoopEvents = true;
 
 				isPlayable = false;
 
 				break;
 
 			case Game.State.playerDraw:
+				GameLoopEvents = true;
 				isPlayable = false;
 
 				if (_playerStats.GetHandNow() < _playerStats.GetHandSize())
@@ -110,26 +118,31 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.playerPlay1:
+				GameLoopEvents = true;
 				isPlayable = true;
 
 				break;
 
 			case Game.State.playerMove:
+				GameLoopEvents = true;
 				isPlayable = false;
 
 				break;
 
 			case Game.State.playerResolveDMG:
+				GameLoopEvents = true;
 				isPlayable = false;
 
 				break;
 
 			case Game.State.playerPlay2:
+				GameLoopEvents = true;
 				isPlayable = true;
 
 				break;
 
 			case Game.State.playerCleanUp:
+				GameLoopEvents = true;
 				isPlayable = false;
 
 				break;
@@ -142,6 +155,8 @@ public class Sumo_GameManager : BaseGameManager
 //AI Turn
 
 			case Game.State.aiUntap:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				for (int i = 0; i <= NumberOfAi; i++)
 				{
@@ -152,10 +167,14 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.aiUpkeep:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				break;
 
 			case Game.State.aiMove:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				for (int i = 0; i <= NumberOfAi; i++)
                 {
@@ -165,6 +184,8 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.aiPlay:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				for (int i = 0; i <= NumberOfAi; i++)
                 {
@@ -174,36 +195,50 @@ public class Sumo_GameManager : BaseGameManager
 				break;
 
 			case Game.State.playerTrigger1:
+				GameLoopEvents = true;
+				isPlayable = true;
 
 				break;
 
 			case Game.State.aiResolveDMG:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				break;
 
 			case Game.State.playerTrigger2:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				break;
 
 			case Game.State.aiCleanUp:
+				GameLoopEvents = true;
+				isPlayable = false;
 
 				break;
 
 			case Game.State.gameTurnPassAI:
-
+				SetTargetState(Game.State.playerUntap);
 				break;
 
 //End Game Events
 
 			case Game.State.gameEnding:
+				GameLoopEvents = false;
+				isPlayable = false;
 				GameEnding();
 				break;
 
 			case Game.State.gameEnded:
+				GameLoopEvents = false;
+				isPlayable = false;
 				GameEnded();
 				break;
 
 			case Game.State.restartingGame:
+				GameLoopEvents = false;
+				isPlayable = false;
 				RestartGameTest();
 				break;
 

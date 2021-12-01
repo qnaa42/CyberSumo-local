@@ -45,6 +45,8 @@ public class Sumo_UIManager : MonoBehaviour
     public GameObject plusOneMoveNowLandCard;
     public GameObject plusTwoMoveNowLandCard;
 
+    public GameObject Decoration;
+
     [Header("Card 05 Direction Buttons")]
     public GameObject cs05DropBox;
     public GameObject c05UpButton;
@@ -85,7 +87,9 @@ public class Sumo_UIManager : MonoBehaviour
     [Header("Turn Bar")]
     public List<GameObject> TurnActive = new List<GameObject>();
     public List<GameObject> TurnInActive = new List<GameObject>();
-
+    public Text WhichTurn;
+    public Text WhatTurn;
+    public GameObject TurnBar;
 
 
 
@@ -112,6 +116,7 @@ public class Sumo_UIManager : MonoBehaviour
         HandMaxText.text = "" + _userStatsManager.GetHandSize().ToString();
         PosHorizontalText.text = "" + _userStatsManager.GetPosHorizontal().ToString();
         PosVerticalText.text = "" + _userStatsManager.GetPosVertical().ToString();
+        RefreshTurnBar();
 
 
         currentStateText.text = Sumo_GameManager.instance.currentGameState.ToString();
@@ -125,6 +130,7 @@ public class Sumo_UIManager : MonoBehaviour
                 Card thisCardStats = thisCard.GetComponent<Card>();
                 if (thisCardStats.id == 1)
                 {
+                    Decoration.SetActive(true);
                     LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(false);
@@ -153,6 +159,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 2)
                 {
+                    Decoration.SetActive(true);
                     LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(true);
@@ -181,6 +188,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 3)
                 {
+                    Decoration.SetActive(true);
                     LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(true);
@@ -208,6 +216,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 4)
                 {
+                    Decoration.SetActive(true);
                     LandCardsDropBox.SetActive(true);
                     JustOneOptionManaLandCard.SetActive(true);
                     plusOneManaFullLandCard.SetActive(false);
@@ -235,6 +244,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id == 5)
                 {
+                    Decoration.SetActive(false);
                     LandCardsDropBox.SetActive(false);
                     JustOneOptionManaLandCard.SetActive(false);
                     plusOneManaFullLandCard.SetActive(false);
@@ -262,6 +272,7 @@ public class Sumo_UIManager : MonoBehaviour
                 }
                 else if (thisCardStats.id >5)
                 {
+                    Decoration.SetActive(false);
                     LandCardsDropBox.SetActive(false);
                     JustOneOptionManaLandCard.SetActive(false);
                     plusOneManaFullLandCard.SetActive(false);
@@ -292,6 +303,7 @@ public class Sumo_UIManager : MonoBehaviour
         }
         else if (CardZone.GetComponent<Populated>().isNotPopulated == true)
         {
+            Decoration.SetActive(false);
             ResolveButton.SetActive(false);
             CancelButton.SetActive(false);
             PassButton.SetActive(true);
@@ -527,154 +539,305 @@ public class Sumo_UIManager : MonoBehaviour
 
     public void RefreshTurnBar()
     {
+        if (Sumo_GameManager.instance.GameLoopEvents == true)
+        {
+            TurnBar.SetActive(true);
+        }
+        else if (Sumo_GameManager.instance.GameLoopEvents == false)
+        {
+            TurnBar.SetActive(false);
+        }
 //PLAYER TURN
         if (Sumo_GameManager.instance.currentGameState == Game.State.playerUntap)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "UNTAP";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 0)
                 { 
-                    TurnActive[i].SetActive(true); 
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else 
+                else if (i != 0)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerUpkeep)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "UPKEEP";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 1)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 1)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerDraw)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "DRAW";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 2)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 2)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerPlay1)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "PLAY 1";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 3)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 3)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerMove)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "MOVE";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 4)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 4)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerResolveDMG)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "RESOLVE";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 5)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 5)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerPlay2)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "PLAY 2";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 6)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 6)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerCleanUp)
         {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "PASS TURN";
             for (int i = 0; i <= 7; i++)
             {
                 if (i == 7)
                 {
                     TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
                 }
-                else
+                else if (i != 7)
                 {
                     TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
                 }
-
             }
-
         }
 
 //AI TURN
         if (Sumo_GameManager.instance.currentGameState == Game.State.aiUntap)
         {
-
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "UNTAP";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 0)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 0)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
         }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.aiUpkeep)
-        { }
+        {
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "UPKEEP";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 1)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 1)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.aiMove)
-        { }
+        {
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "MOVE";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 2)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 2)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.aiPlay)
-        { }
+        {
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "PLAY";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 3)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 3)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerTrigger1)
-        { }
+        {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "TRIGGER 1";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 4)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 4)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.aiResolveDMG)
-        { }
+        {
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "RESOLVE";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 5)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 5)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.playerTrigger2)
-        { }
+        {
+            WhichTurn.text = "Player Turn";
+            WhatTurn.text = "TRIGGER 2";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 6)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 6)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
         else if (Sumo_GameManager.instance.currentGameState == Game.State.aiCleanUp)
-        { }
+        {
+            WhichTurn.text = "AI Turn";
+            WhatTurn.text = "PASS TURN";
+            for (int i = 0; i <= 7; i++)
+            {
+                if (i == 7)
+                {
+                    TurnActive[i].SetActive(true);
+                    TurnInActive[i].SetActive(false);
+                }
+                else if (i != 7)
+                {
+                    TurnActive[i].SetActive(false);
+                    TurnInActive[i].SetActive(true);
+                }
+            }
+        }
 
     }
 
